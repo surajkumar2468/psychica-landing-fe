@@ -615,6 +615,7 @@ hr {
 
 .custom-calenderPopper-login,
 .custom-calenderPopper-dashboard {
+  z-index: 10 !important;
   padding-top: 66px !important;
 }
 
