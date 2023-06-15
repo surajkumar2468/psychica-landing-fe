@@ -20,16 +20,20 @@ import { API_URLS } from "../../utils/API_URLS";
 import axiosInstance from "../../config/axiosinstance";
 import SearchIcon from "../../Resources/icons/SearchIcon";
 import { useLocation } from "react-router-dom";
+import { Dropdown } from "react-bootstrap";
+
 
 const BookAppointment = ({ sceduleType }) => {
   const currELe = useRef(null);
   // const router = useRouter();
   const location = useLocation();
+
   const { id, type, timezone, name, price, picture } = new URLSearchParams(
     location.search
   );
   const [slots, setSlot] = useState([]);
   const [width, setWidth] = useState(0);
+  const [openDropdown, setOpenDropdown] = useState(false);
   const handleResize = () => setWidth(window.innerWidth);
 
   const [loader, setLoader] = useState(false);
@@ -66,6 +70,7 @@ const BookAppointment = ({ sceduleType }) => {
       getSlots();
     }
   }, [schedule?.start_date, id, timezone]);
+
 
   const handleAPIcall = () => {
     const params = { ...schedule };
@@ -193,33 +198,30 @@ const BookAppointment = ({ sceduleType }) => {
         <div className={`${styles.time} d-flex gap-5`}>
           <div
             className={`${
-              // router.pathname === `/client/appointment-future/[id]`
+              location.pathname === `/appointment-future` ?
               styles.active
-              // : ""
-            }`}
+              : "" }`}
           >
             <a
               className={styles.FNLink}
-              href={`/client/appointment-future/${id}?&picture=${picture}&price=${price}&type=${
-                type ? type : ""
-              }&name=${name}&timezone=${timezone}`}
+              // href={`/client/appointment-future/${id}?&picture=${picture}&price=${price}&type=${type ? type : ""
+              //   }&name=${name}&timezone=${timezone}`}
+              href='/appointment-future'
             >
               Future
             </a>
           </div>
           <div
             className={`${
-              // router.pathname === `/client/appointment-now/[id]`
-              // ?
+              location.pathname === `/appointment-now` ?
               styles.active
-              // : ""
-            }`}
+              : "" }`}
           >
             <a
               className={styles.FNLink}
-              href={`/client/appointment-now/${id}?&picture=${picture}&price=${price}&type=${
-                type ? type : ""
-              }&name=${name}&timezone=${timezone}`}
+              // href={`/client/appointment-now/${id}?&picture=${picture}&price=${price}&type=${type ? type : ""
+              //   }&name=${name}&timezone=${timezone}`}
+              href='/appointment-now'
             >
               Today
             </a>
@@ -229,27 +231,24 @@ const BookAppointment = ({ sceduleType }) => {
         <div
           className={`d-flex justify-content-between flex-wrap ${styles.secContainer}`}
         >
-          <div className={styles.sectionWrapper1}>
-            <div
+          <Dropdown className={`${styles.sectionWrapper1}`} onClick={()=> setOpenDropdown(!openDropdown)}>
+            <Dropdown.Toggle
               className={"d-flex gap-3 dropdown-toggle " + styles.section}
-              data-bs-toggle="dropdown"
-              id="dropdownMenuButton1"
-              aria-expanded="false"
+
             >
               <span>
                 <Meeting />
               </span>
-              <div className="d-flex flex-column ">
+              <div className={`d-flex flex-column ${styles.text_start}`}>
                 <h5>Meeting Type</h5>
                 <span>{meeting.label}</span>
               </div>
-            </div>
+            </Dropdown.Toggle>
 
-            <ul
-              aria-labelledby="dropdownMenuButton1"
-              className={"dropdown-menu " + styles.DDList}
+            <Dropdown.Menu
+              className={`${styles.DDList} ${openDropdown ? styles.showDropdown : styles.hideDropdown}`}
             >
-              <li
+              <Dropdown.Item
                 onClick={() => {
                   setMeeting({ ...meeting, label: "Computer Audio" });
                   setSchedule({ ...schedule, meeting_type: "audio" });
@@ -261,8 +260,8 @@ const BookAppointment = ({ sceduleType }) => {
                 <span className={styles.listItem}>
                   Appointment via Computer Audio
                 </span>
-              </li>
-              <li
+              </Dropdown.Item>
+              <Dropdown.Item
                 onClick={() => {
                   setMeeting({ ...meeting, label: "Video" });
                   setSchedule({ ...schedule, meeting_type: "video" });
@@ -272,9 +271,10 @@ const BookAppointment = ({ sceduleType }) => {
                   <AppVideo />
                 </span>
                 <span className={styles.listItem}>Appointment via Video</span>
-              </li>
-            </ul>
-          </div>
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+
 
           <div className={`${styles.sectionWrapper1}`}>
             <DatePicker
@@ -284,6 +284,7 @@ const BookAppointment = ({ sceduleType }) => {
               calendarClassName="book-appointment-date"
               wrapperClassName={` ${styles.calendarWrapper}`}
               popperPlacement="top"
+              disabled={sceduleType === 'now'}
               // disabled={schedule?.schedule_type === "now"}
               minDate={moment().toDate()}
               customInput={
@@ -312,11 +313,10 @@ const BookAppointment = ({ sceduleType }) => {
             />
           </div>
 
-          <div className={styles.sectionWrapper2}>
-            <div
-              className={` d-flex gap-3 ${slots?.length <= 0 && "disabled"} ${
-                schedule?.schedule_type !== "now" ? "dropdown-toggle" : ""
-              } 
+          <Dropdown className={styles.sectionWrapper2}>
+            <Dropdown.Toggle
+              className={` d-flex gap-3 ${slots?.length <= 0 && "disabled"} ${schedule?.schedule_type !== "now" ? "dropdown-toggle" : ""
+                }
                 ${styles.section}`}
               data-bs-toggle="dropdown"
               aria-expanded="false"
@@ -334,26 +334,25 @@ const BookAppointment = ({ sceduleType }) => {
                   )}
                 </span>
               </div>
-            </div>
-            <ul className={`dropdown-menu  ${styles.DDmintList}`}>
+            </Dropdown.Toggle>
+            <Dropdown.Menu className={`${slots?.length > 0 && styles.DDmintList}`}>
               {slots?.length > 0 &&
                 slots?.map((ele, idx) => {
                   return (
-                    <li
+                    <Dropdown.Item
                       onClick={() => handleStartTime(ele)}
-                      className={`${
-                        start.id === ele ? styles.selectedListItem : ""
-                      } mb-2`}
+                      className={`${start.id === ele ? styles.selectedListItem : ""
+                        } mb-2`}
                       key={idx}
                     >
                       <span className={`${styles.listItem}`}>
                         {convertUnixToHumanReadableTime(ele.start_date)}
                       </span>
-                    </li>
+                    </Dropdown.Item>
                   );
                 })}
-            </ul>
-          </div>
+            </Dropdown.Menu>
+          </Dropdown>
 
           <div className={styles.sectionWrapper2}>
             <div

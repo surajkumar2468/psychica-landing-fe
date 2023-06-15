@@ -520,6 +520,19 @@ header.header {
 .d-flex {
   display: flex;
 }
+
+.flex-column {
+  flex-direction: column;
+}
+
+.gap-3 {
+  gap: 1rem!important;
+}
+
+.gap-5 {
+  gap: 2rem !important;
+}
+
 .home_sec2_content .explore_btn {
   border: 2px solid #e6e8ec;
   font-size: 16px;

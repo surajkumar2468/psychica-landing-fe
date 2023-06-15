@@ -37,6 +37,8 @@
 .section {
   padding: 20px 26px;
   cursor: pointer;
+  border: none !important;
+  background-color: #fcfcfc;
 }
 
 .sectionWrapper1,
@@ -85,6 +87,10 @@
   height: 64px;
   width: 64px;
   margin-top: 20px;
+}
+
+.text_start {
+  text-align: start !important;
 }
 
 .DDList {
@@ -193,6 +199,17 @@
 
 .calendarWidth {
   width: 100% !important;
+}
+
+.showDropdown {
+  display: block;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 2rem !important;
+}
+
+.hideDropdown {
+  display: none;
 }
 
 @media screen and (min-width: 1280px) and (max-width: 1599px) {
