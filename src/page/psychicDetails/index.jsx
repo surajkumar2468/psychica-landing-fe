@@ -1,344 +1,61 @@
-import React, { useEffect, useState } from "react";
-import styles from "./psychicdetails.module.css";
-import { BsArrowLeftShort, BsStar } from "react-icons/bs";
-import { AiOutlineCheck, AiOutlineClose } from "react-icons/ai";
-import classNames from "classnames";
-import { API_URLS } from "../../utils/API_URLS";
-// import { useRouter } from "next/router";
-import axiosInstance from "../../config/axiosinstance";
-import { toast } from "react-toastify";
+import React from 'react'
+import PsychicCard from '../../components/PsychicCard'
 
-const Explorephysicsdetail = () => {
-  const [details, setDetails] = useState(null);
-  // const router = useRouter();
-  // const { id, type, last_route } = router.query;
-
-  const getPsychicdetails = async () => {
-    await axiosInstance
-      .get(`${API_URLS.psychicDetails}648a88b4d6e0ddc263dccc7e`)
-      .then((res) => {
-        setDetails({ ...res });
-      })
-      .catch((error) => {
-        toast.error(error?.message, {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: true,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
-        });
-      });
-  };
-
-  useEffect(() => {
-    // if (id) {
-    getPsychicdetails();
-    // }
-  }, []);
-
+const index = () => {
   return (
-    <>
-      <div className="home_sec2">
-        <div>
-          <section className={styles.category_detail_page}>
-            <div className={classNames(styles.cntr_main, "container-fluid")}>
-              <div className="row">
-                <div className={classNames("col-md-12 col-sm-12 ")}>
-                  <div className={styles.back_name}>
-                    <h6>
-                      {" "}
-                      <BsArrowLeftShort className={styles.back_btn} />
-                      {`Back to Psychics`}
-                    </h6>
-                  </div>
-                  <div className={styles.bgbg_img}>
-                    <div
-                      style={{
-                        backgroundImage: `url(${
-                          details?.picture
-                            ? details?.picture
-                            : "/images/ProfileImages/user-bg1.png"
-                        })`,
-                      }}
-                      className={styles.cardBgImage}
-                    ></div>
-                    <img
-                      src={
-                        details?.picture
-                          ? details?.picture
-                          : "/images/ProfileImages/user-bg1.png"
-                      }
-                      // src={details?.picture}
-                      alt=""
-                      width="100%"
-                      className={styles.bgImg}
-                    />
-                  </div>
-                  <div className={styles.user_check_ftr}>
-                    <div className={styles.recomend}>
-                      <div className={styles.recomed_decs}>
-                        <div className={styles.rating}>
-                          {details?.isEmailVerified ? (
-                            <>
-                              {" "}
-                              <AiOutlineCheck />
-                              <p>Identity verified</p>
-                            </>
-                          ) : (
-                            <>
-                              {" "}
-                              <AiOutlineClose />
-                              <p>Identity unverified</p>
-                            </>
-                          )}
-
-                          {/* <AiOutlineCheck />
-                        <p>Identity verified</p> */}
-                        </div>
-
-                        <div className={classNames(styles.rating, "m-0")}>
-                          <BsStar />
-
-                          <p>
-                            {details?.review_count}{" "}
-                            {details?.review_count > 1 ? "reviews" : "review"}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section className={styles.detail_decs}>
-            <div className={classNames(styles.cntr_main, "container-fluid")}>
-              <div className="row">
-                <div className="col-lg-7 col-sm-12 col-md-12">
-                  <div className={styles.main_detail}>
-                    <div className={styles.user_names}>
-                      <h4 style={{ textTransform: "capitalize" }}>
-                        {details?.first_name} {details?.last_name}
-                      </h4>
-                    </div>
-                    <div className={styles.divider_image}>
-                      <img
-                        src={"/images/ExploreCategoryImages/divider.png"}
-                        alt=""
-                      />
-                    </div>
-
-                    <div className={styles.career_path}>
-                      <div className={styles.seclove}>
-                        <img
-                          src={"/images/ExploreCategoryImages/ReadingType.svg"}
-                          alt=""
-                          // width="7%"
-                        />
-                        <span>
-                          {details?.topics?.map((ele, index) => (
-                            <span>
-                              {index !== 0 && ", "}
-                              {ele.charAt(0).toUpperCase() + ele.slice(1)}
-                            </span>
-                          ))}
-                        </span>
-                      </div>
-
-                      <div className={styles.seclove}>
-                        <img
-                          src="/images/ExploreCategoryImages/eyeIcon.svg"
-                          alt=""
-                        />
-                        {details?.abilities?.map((ele, index) => (
-                          <span>
-                            {index !== 0 && ", "}
-                            {ele.charAt(0).toUpperCase() + ele.slice(1)}
-                          </span>
-                        ))}
-                      </div>
-                      <div className={styles.secloves}>
-                        <img
-                          src="/images/ExploreCategoryImages/Type.svg"
-                          alt=""
-                          // width="9%"
-                        />
-                        {details?.styles?.map((ele, index) => (
-                          <span>
-                            {index !== 0 && ", "}
-                            {ele.charAt(0).toUpperCase() + ele.slice(1)}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className={styles.paragraph}>
-                      <p>{details?.bio}</p>
-                    </div>
-                    <h3 className={styles.Psychic_Tools_heading}>
-                      Psychic Tools
-                    </h3>
-
-                    <div className="row">
-                      <div className="col-md-12 col-sm-12 col-lg-4 ">
-                        <div className={styles.Psychic_Tools}>
-                          {details?.specialities?.map((ele) => {
-                            return (
-                              <>
-                                <div className={styles.Psychic_Tools_name}>
-                                  <img
-                                    src="/images/ExploreCategoryImages/TarotCards.png"
-                                    alt=""
-                                    width="8%"
-                                  />
-                                  <span>
-                                    {ele.charAt(0).toUpperCase() + ele.slice(1)}
-                                  </span>
-                                </div>
-                              </>
-                            );
-                          })}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-md-12 col-sm-12 col-lg-5">
-                  <div className={styles.user_about_main}>
-                    <div className={styles.user_about_sub}>
-                      <div className={styles.user_about_head}>
-                        <h2>
-                          $ {details?.actual_rate} <span>/minute</span>
-                        </h2>
-
-                        <img
-                          // src="/images/ExploreCategoryImages/userimg.png"
-                          src={
-                            details?.picture
-                              ? details?.picture
-                              : "/images/dummyAvatar.png"
-                          }
-                          alt=""
-                        />
-                        <img
-                          src="/images/ExploreCategoryImages/check.svg"
-                          className={styles.check}
-                          alt=""
-                        />
-                        {/* <AiFillCheckCircle className={styles.check}/> */}
-                      </div>
-                    </div>
-                    <div className={styles.user_rating}>
-                      <div className={styles.user_rating_count}>
-                        <img
-                          src="/images/ExploreCategoryImages/star.svg"
-                          alt=""
-                        />
-                        <h2>
-                          {details?.average_rating}
-                          <span>
-                            ({details?.review_count || 0}{" "}
-                            {details?.review_count > 1 ? "reviews" : "review"})
-                          </span>
-                        </h2>
-                      </div>
-                    </div>
-                    <div className={styles.user_status}>
-                      <div
-                        className={
-                          styles.user_status_calender +
-                          " " +
-                          styles.user_status_calender_border
-                        }
-                      >
-                        <img
-                          src="/images/ExploreCategoryImages/calender.svg"
-                          alt=""
-                          className={styles.status_img}
-                        />
-                        <div className={styles.user_status_decs}>
-                          <span>Status</span>
-                          <h3>Available</h3>
-                        </div>
-                      </div>
-
-                      <div className={styles.user_status_calender}>
-                        <img
-                          src="/images/ExploreCategoryImages/calender.svg"
-                          alt=""
-                        />
-                        <div
-                          className={classNames(
-                            styles.user_status_decs,
-                            styles.user_status_decs1
-                          )}
-                        >
-                          <span>Estimated Wait</span>
-                          <h3>0 minutes</h3>
-                        </div>
-                      </div>
-                      <div className={classNames(styles.user_status_calender)}>
-                        <img
-                          src="/images/ExploreCategoryImages/user.svg"
-                          alt=""
-                        />
-                        <div className={styles.user_status_decs}>
-                          <span>Time Minimum</span>
-                          <h3>30 minutes</h3>
-                        </div>
-                      </div>
-                    </div>
-                    <div className={styles.user_btn}>
-                      <button
-                        // onClick={() => {
-                        //   if (!userProfile?.isEmailVerified) {
-                        //     Swal.fire({
-                        //       title: "Please Verify your email",
-                        //       icon: "error",
-                        //       confirmButtonText: "OK",
-                        //     });
-                        //   } else {
-                        //     router.push(
-                        //       `/client/appointment-now/${id}?${
-                        //         details?.picture
-                        //           ? "picture=" +
-                        //             details?.picture?.replace("https://", "")
-                        //           : ""
-                        //       }&price=${details?.actual_rate}&type=${
-                        //         type ? type : ""
-                        //       }&name=${details?.first_name}&timezone=${
-                        //         details?.timezone
-                        //       }`
-                        //     );
-                        //   }
-                        // }}
-                        className={classNames(
-                          // !userProfile?.isEmailVerified && "diabled-btn",
-                          styles.user_e_btnsnd
-                        )}
-                      >
-                        Meet
-                        {/* <TbShoppingBag /> */}
-                      </button>
-                    </div>
-
-                    {/* <div className={styles.user_report}>
-                    <img src="/images/ExploreCategoryImages/flag.png" alt="" />
-                    <p>Report this psychic</p>
-                  </div> */}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
+    <div>
+      <section className='psychic_details'>
+        <div className='container'>
+          <div className='back_btn'>
+            <a href=''><img src="/images/icon_arrow.svg" alt="" />
+              Back to Love Psychics</a>
+          </div>
+          <div className='img_explore_sec'>
+            <span className='main_img_explore'><img src='/images/pexels-quang-nguyen-vinh2.jpg' className='img_explore_blur' alt="" />
+              <span className='center_img_explore'>  <img src='/images/pexels-pavel-danilyuk.jpg' alt="" /> </span>
+            </span>
+            <p><img src="/images/check_icon.svg" alt="" />
+              Identity verified  <img src="/images/shape_star.svg" alt="" className='shape_star' />
+              256 reviews</p>
+          </div>
         </div>
-      </div>
-    </>
-  );
-};
+      </section>
+      <section className='psychic_details2'>
+        <div className='container'>
+          <div className='row'>
+            <div className='col-12 col-md-7 pe-md-5'>
+              <div className='psychic_details2_left'>
+                <h2>Tina W.</h2>
+                <ul className='psychic_details2_ul'>
+                  <li><img src="/images/readingtype.svg" alt="" /> Love, Career, Life Path, Money</li>
+                  <li><img src="/images/abilities-icon.svg" alt="" /> Empath, Medium, Clairvoyant</li>
+                  <li><img src="/images/type_icon.svg" alt="" /> Straightforward</li>
+                </ul>
+                <p>Tina discovered her abilities at an early age and has been reading professionally for over 30 years. Through vibrations, energies, Spiritual Guides, feelings, moods, sensations, and visions, she can connect with her callers. She uses her knowledge of Tarot Cards, Oracle Cards, I-Ching, Numerology, Pendulum, and Astrology, to receive validations during the reading. </p>
+                <p>As a Channeling, Clairaudient, Clairsentient, Clairvoyant, Medium, and Empath Psychic, she can help the callers tap into their spirit, solve their problems, and find peace of mind. She aims to be compassionate and empathetic. Her experience allows her to provide guidance on destiny, life path, love, relationships, dream analysis, and career. “I hope that my callers can solve their problems and receive peace of mind.”</p>
+                <h3>Psychic Tools</h3>
+                <ul className='psychic_details2_ul2'>
+                  <li><img src="/images/tarotcards.svg" alt="" /> Tarot Cards</li>
+                  <li><img src="/images/pendulum.svg" alt="" /> Pendulum</li>
+                  <li><img src="/images/astrology.svg" alt="" /> Astrology</li>
+                  <li><img src="/images/crystals2-icon.svg" alt="" /> Crystals</li>
+                  <li><img src="/images/iching_icon.svg" alt="" /> I-Ching</li>
+                  <li><img src="/images/vector-icon.svg" alt="" /> Oracle Cards</li>
+                  <li><img src="/images/numerology-icon.svg" alt="" /> Numerology</li>
+                  <li><img src="/images/vector_icon1.svg" alt="" /> No Tools (Tool-Free)</li>
+                </ul>
+                <div className='btn_profesa'>
+                  <a href=''>Get Profesa+ and Save</a></div>
+              </div>
+            </div>
+            <div className='col-12 col-md-5'>
+              <PsychicCard />
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  )
+}
 
-export default Explorephysicsdetail;
+export default index

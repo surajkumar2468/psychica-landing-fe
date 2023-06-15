@@ -28,9 +28,13 @@ const BookAppointment = ({ sceduleType }) => {
   // const router = useRouter();
   const location = useLocation();
 
-  const { id, type, timezone, name, price, picture } = new URLSearchParams(
-    location.search
-  );
+  // const { id, type, timezone, name, price, picture } = new URLSearchParams(
+  //   location.search
+  // );
+
+  const id = '';
+  const timezone='Asia/Kolkata';
+
   const [slots, setSlot] = useState([]);
   const [width, setWidth] = useState(0);
   const [openDropdown, setOpenDropdown] = useState(false);
@@ -147,6 +151,7 @@ const BookAppointment = ({ sceduleType }) => {
   };
 
   const getSlots = async () => {
+    console.log("API CALL");
     const dataValue = new Date(schedule?.start_date);
     axiosInstance
       .get(

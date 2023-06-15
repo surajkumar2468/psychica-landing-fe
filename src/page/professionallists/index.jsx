@@ -9,9 +9,66 @@ const ProfessionalLists = () => {
   }, []);
   return (
     <div className="home_sec3">
-      <div>
-
-      </div>
+      <section className='explore_category_sec'>
+        <div className='container'>
+          <h2>Explore Love Psychics</h2>
+          <div className='row'>
+            <div className='col-12 col-md-7'>
+              <div className='category_hedding'><h5>Muze</h5><p><img src="/images/abilities-icon.svg" alt="" />Empath, Medium, Clairvoyant</p></div>
+              <div className='img_explore_sec'>
+                <img src="/images/pexels-pavel-danilyuk.jpg" alt="" />
+                <p><img src="/images/check_icon.svg" alt="" />
+                  Recommended By Staff</p>
+              </div>
+            </div>
+            <div className='col-12 col-md-5'>
+              <div className='category__right_main'>
+                <div className='category__right_row1'>
+                  <div>
+                    <h3> <b>$1</b> $0.80 <small>/minute</small></h3>
+                    <div className='star__rating'><img src="/images/star-icon.svg" alt="" /> 4.8 <i>(12 reviews)</i></div>
+                  </div>
+                  <div className='star__img'>
+                    <img src="/images/pexels-pavel-danilyuk2.png" alt="" />
+                    <span><img src="/images/check_green.svg" alt="" /></span>
+                  </div>
+                </div>
+                <div className='category__right_row2'>
+                  <ul>
+                    <li>
+                      <span><img src="/images/status_icon.svg" alt="" /></span>
+                      <h4>Status <b>Available</b></h4>
+                    </li>
+                    <li>
+                      <span><img src="/images/status_icon.svg" alt="" /></span>
+                      <h4>Estimated Wait <b>0 minutes</b></h4>
+                    </li>
+                    <li>
+                      <span><img src="/images/man_icon.svg" alt="" /></span>
+                      <h4>Time Minimum <b>30 minutes</b></h4>
+                    </li>
+                  </ul>
+                </div>
+                <div className='category__right_row3'>
+                  <ul>
+                    <li>
+                      <a href=''>Learn About Tina</a>
+                    </li>
+                    <li>
+                      <a href=''>Meet With Tina
+                        <img src="/images/shopping_bag_icon.svg" alt="" /> </a>
+                    </li>
+                  </ul>
+                  <p className='right_row3_tag'>
+                    <img src="/images/report_icon.svg" alt="" />
+                    Report this psychic
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <PsychicListData />
     </div>
     // <>
