@@ -33,12 +33,28 @@ const Header = () => {
           </div>
           <div className="hrd_btn">
             <ul>
-              <li>
-                <a href="">Login</a>
-              </li>
-              <li>
-                <a href="">Signup </a>
-              </li>
+              {localStorage.getItem("token") ? (
+                <li>
+                  <a
+                    href={`http://localhost:3001/client/dashboard?token=${localStorage.getItem(
+                      "token"
+                    )}&refreshToken=${localStorage.getItem(
+                      "userTokenRefresh"
+                    )}`}
+                  >
+                    Dashboard
+                  </a>
+                </li>
+              ) : (
+                <>
+                  <li>
+                    <a href="">Login</a>
+                  </li>
+                  <li>
+                    <a href="">Signup </a>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
         </div>

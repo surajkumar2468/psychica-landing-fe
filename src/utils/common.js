@@ -1,4 +1,3 @@
-
 export const nth = function (d) {
   if (d > 3 && d < 21) return "th";
   switch (d % 10) {
@@ -99,6 +98,20 @@ export function convertToAmericanTime(isoString, formatString) {
     return error.message;
   }
 }
+
+export const getQueryParamsAsObject = (qs) => {
+  const params = new URLSearchParams(qs);
+  const obj = {};
+  for (const key of params.keys()) {
+    if (params.getAll(key).length > 1) {
+      obj[key] = params.getAll(key);
+    } else {
+      obj[key] = params.get(key);
+    }
+  }
+  console.log(obj)
+  return obj;
+};
 
 /**
  *
@@ -386,11 +399,11 @@ export const _debounce = (fn, delay) => {
 };
 
 export function isCurrentTimeInRange(startTimeUnix, endTimeUnix) {
-//   const nowUnix = moment().unix();
-//   const startTimeMinusFiveMinutes = moment
-//     .unix(startTimeUnix)
-//     .subtract(5, "minutes")
-//     .unix();
+  //   const nowUnix = moment().unix();
+  //   const startTimeMinusFiveMinutes = moment
+  //     .unix(startTimeUnix)
+  //     .subtract(5, "minutes")
+  //     .unix();
   return true;
   // Return true if the current time is between 5 minutes before the start time and the end time
   // return nowUnix >= startTimeMinusFiveMinutes && nowUnix <= endTimeUnix;

@@ -3,6 +3,7 @@ import Landing from "../page/landing";
 import ProfessionalLists from "../page/professionallists";
 import PsychicDetails from "../page/psychicDetails";
 import Psychictypes from "../page/psychicstypes";
+import ScheduleAppointment from "../page/scheduleappointment";
 
 export const routes = [
   {
@@ -34,5 +35,10 @@ export const routes = [
     id: "appointment-future",
     path: "/appointment-future",
     component: <Appointment />,
+  },
+  {
+    id: "ScheduleAppointment",
+    path: "/scheduleappointment",
+    component: <ScheduleAppointment />,
   },
 ];

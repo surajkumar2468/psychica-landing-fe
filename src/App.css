@@ -115,6 +115,8 @@ section {
 ol,
 ul {
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 blockquote,
 q {
@@ -476,6 +478,18 @@ header.header {
 .col-lg-7 {
   flex: 0 0 auto;
   width: 58.33333333%;
+}
+
+.col-sm-6 {
+  flex: 0 0 auto;
+  width: 50%;
+}
+
+.btn-transparant {
+  background: white !important;
+  padding: 16px 0;
+  font-family: "Nexa-Bold";
+  border: 1px solid #e5e6eb !important;
 }
 
 @media (min-width: 992px) {

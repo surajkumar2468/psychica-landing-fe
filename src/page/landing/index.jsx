@@ -1,8 +1,48 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import TypeSlider from "../../components/TypesSlider";
 import PsychicListData from "../../components/PsychicListData";
+import axiosInstance from "../../config/axiosinstance";
+import { API_URLS } from "../../utils/API_URLS";
+import { toast } from "react-toastify";
 
 const Landing = () => {
+  const [exploreTopic, setExploreTopic] = useState();
+  const [details, setDetails] = useState(null);
+
+  const getPsychicDetails = () => {
+    axiosInstance
+      .get(API_URLS.explorePsychic)
+      .then((data) => {
+        setExploreTopic(data[1]);
+        getPsychicCategory(data[1]?.id, data[1]?.list[1]?.name);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  useEffect(() => {
+    getPsychicDetails();
+  }, []);
+
+  const getPsychicCategory = async (type, value) => {
+    await axiosInstance
+      .get(`${API_URLS.psychicCategory}type?type=${type}&value=${value}`)
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        toast.error(error?.message, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+      });
+  };
+
   return (
     <div className="App">
       <div className="container">
@@ -44,7 +84,7 @@ const Landing = () => {
         </section>
       </div>
       <section className="home_sec2">
-        <TypeSlider />
+        <TypeSlider exploreTopic={exploreTopic} />
       </section>
       <section className="home_sec3">
         <PsychicListData />

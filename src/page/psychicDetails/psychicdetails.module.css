@@ -511,9 +511,7 @@
     .seclove img {
       width: 4%;
     }
-    .status_img {
-      /* width: 19% !important; */
-    }
+
     .user_check_ftr > .recomend > .recomed_decs {
       display: flex;
       align-items: center;

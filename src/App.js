@@ -1,4 +1,6 @@
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import "animate.css";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { routes } from "./config/routes";
 import Header from "./components/Header";

@@ -1,66 +1,33 @@
 import React from "react";
+import styles from "./typeSlider.module.css";
+import { AiOutlineRight } from "react-icons/ai";
 
-const TypeSlider = () => {
+const TypeSlider = ({ exploreTopic }) => {
+  console.log(exploreTopic);
   return (
     <div className="container">
-      <h2>Explore By Topic</h2>
+      <h2>Explore By {exploreTopic?._id}</h2>
       <ul className="row">
-        <li className="col-12 col-md-3">
-          <div className="home_sec2_content">
-            <span>
-              <img src="/images/explore-topic-img1.jpg" alt="" />
-            </span>
-            <div>
-              <h4>Love</h4>
-              <a href="" className="explore_btn">
-                {" "}
-                Explore{" "}
-              </a>
+        {exploreTopic?.list?.map((item) => {
+          return (
+            <div key={item.id} className={styles.first_slide}>
+              <div className={styles.main_box}>
+                <p>IX</p>
+                <div className={styles.cent_img}>
+                  <img src={item.image} alt="img-exp" />
+                </div>
+              </div>
+              <div className={styles.box_footer}>
+                <h6>{item.name}</h6>
+                <a
+                  href={`/professionallists?type=${item.type}&value=${item.name}`}
+                >
+                  Explore <AiOutlineRight />
+                </a>
+              </div>
             </div>
-          </div>
-        </li>{" "}
-        <li className="col-12 col-md-3">
-          <div className="home_sec2_content">
-            <span>
-              <img src="/images/explore-topic-img1.jpg" alt="" />
-            </span>
-            <div>
-              <h4>Love</h4>
-              <a href="" className="explore_btn">
-                {" "}
-                Explore{" "}
-              </a>
-            </div>
-          </div>
-        </li>{" "}
-        <li className="col-12 col-md-3">
-          <div className="home_sec2_content">
-            <span>
-              <img src="/images/explore-topic-img1.jpg" alt="" />
-            </span>
-            <div>
-              <h4>Love</h4>
-              <a href="" className="explore_btn">
-                {" "}
-                Explore{" "}
-              </a>
-            </div>
-          </div>
-        </li>{" "}
-        <li className="col-12 col-md-3">
-          <div className="home_sec2_content">
-            <span>
-              <img src="/images/explore-topic-img1.jpg" alt="" />
-            </span>
-            <div>
-              <h4>Love</h4>
-              <a href="" className="explore_btn">
-                {" "}
-                Explore{" "}
-              </a>
-            </div>
-          </div>
-        </li>
+          );
+        })}{" "}
       </ul>
     </div>
   );
