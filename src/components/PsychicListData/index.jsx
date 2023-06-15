@@ -1,28 +1,11 @@
-import React, { useEffect, useState } from "react"; import { API_URLS } from "../../utils/API_URLS";
-import axiosInstance from "../../config/axiosinstance";
+import React, { useEffect, useState } from "react"; 
 
 
-const PsychicListData = () => {
 
-  const [promotedPsychics, setPromotedPsychics] = useState([]);
-  const [availablePsychic, setAvailablePsychic] = useState([]);
+const PsychicListData = ({professionalList}) => {
 
-  const getPsychicList = async () => {
-    axiosInstance
-      .get(API_URLS.explorePsychic)
-      .then((res) => {
-        console.log("RES", res);
-        setPromotedPsychics(res.slice(0, 2));
-        setAvailablePsychic(res.slice(2, 8));
-      })
-      .catch((err) => {
-        console.warn(err);
-      });
-  };
-
-  useEffect(() => {
-    getPsychicList();
-  }, [])
+  const promotedPsychics = professionalList.slice(0,2);
+  const availablePsychic = professionalList.slice(2, professionalList.length);
 
 
   return (

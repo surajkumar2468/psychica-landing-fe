@@ -6,6 +6,6 @@ export const API_URLS = {
   createSchedules: "v1/schedules",
   availableSlots: "v1/schedules/available-slots/",
   checkSlot: "v1/schedules/check-slot/",
-  psychicCategory: "v1/category",
   explorePsychic: "v1/users/get-latest-professionals",
+
 };
