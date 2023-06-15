@@ -967,6 +967,17 @@ ul.psychic_details2_ul li img{ margin-right: 8px;}
     span.main_img_explore img.img_explore_blur {
       filter: blur(6px);
   }
+  .img_explore_sec {
+    width: 100%;
+    height: 100%;
+  }
+  .main_img_explore {
+    width: 100%;
+    height: 400px;
+  }
+  .img_explore_blur {
+    width: 100%;
+  }
   span.center_img_explore {
     position: absolute;
     top: 50%;
@@ -976,4 +987,12 @@ ul.psychic_details2_ul li img{ margin-right: 8px;}
     transform: translate(-50%, -50%);}
 .slick-slide {
   width: 284px !important;
+}
+
+.align-left {
+  align-items: baseline !important;
+}
+
+.justify-content-center {
+  justify-content: center !important;
 }

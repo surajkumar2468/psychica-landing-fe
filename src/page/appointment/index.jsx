@@ -42,7 +42,7 @@ const Appointment = () => {
             <div className={styles.backgroundPadding}>
               <div className={styles.nowBG}>
                 <div className={styles.BGContent}>
-                  <h1>{location.pathname === '/appointment-future' ? appointmentFutureData?.pageHeading : appointmentNowData?.pageHeading}</h1>
+                  <h1>{location.pathname.includes('/appointment-future') ? appointmentFutureData?.pageHeading : appointmentNowData?.pageHeading}</h1>
                   <p className="mb-0">Book an appointment with name now.</p>
                   <span className={styles.bookTimeZone}>
                     Name's Timezone : timezone
@@ -51,7 +51,7 @@ const Appointment = () => {
                 {width > 1024 ? (
                   <div className={styles.BAContainer}>
                     {
-                      location.pathname === '/appointment-future' ?
+                      location.pathname.includes('/appointment-future') ?
                       <BookAppointment sceduleType="future" />
                       :
                       <BookAppointment sceduleType="now" />

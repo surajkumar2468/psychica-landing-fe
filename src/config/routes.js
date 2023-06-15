@@ -22,17 +22,17 @@ export const routes = [
   },
   {
     id: "psychicdetails",
-    path: "/psychicdetails",
+    path: "/psychicdetails/:id",
     component: <PsychicDetails />,
   },
   {
     id: "appointment-now",
-    path: "/appointment-now",
+    path: "/appointment-now/:id",
     component: <Appointment />,
   },
   {
     id: "appointment-future",
-    path: "/appointment-future",
+    path: "/appointment-future/:id",
     component: <Appointment />,
   },
 ];

@@ -1,13 +1,34 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
-const index = () => {
+const Index = ({actualrate, reviewcount, actualrating, name, picture, id, timezone, type}) => {
+    console.log("TYPE",timezone);
+
+    const navigate = useNavigate();
+
+    const handleBookappointment = (id, picture, price, name, timezone, type) => {
+        const queryParams = {
+          picture: picture ? picture?.replace("https://", "") : "",
+          price: price,
+          name: name,
+          type: type,
+          timezone: timezone
+        };
+    
+        navigate({
+          pathname: `/appointment-now/${id}`,
+          search: new URLSearchParams(queryParams).toString(),
+        });
+      }
+
+
     return (
         <div>
             <div className='category__right_main'>
                 <div className='category__right_row1'>
                     <div>
-                        <h3> <b>$1</b> $0.80 <small>/minute</small></h3>
-                        <div className='star__rating'><img src="/images/star-icon.svg" alt="" /> 4.8 <i>(12 reviews)</i></div>
+                        <h3> ${`${actualrate}`} <small>/minute</small></h3>
+                        <div className='star__rating'><img src="/images/star-icon.svg" alt="" /> {`${actualrating}`} <i>{`(${reviewcount} reviews)`}</i></div>
                     </div>
                     <div className='star__img'>
                         <img src="/images/pexels-pavel-danilyuk2.png" alt="" />
@@ -31,16 +52,17 @@ const index = () => {
                     </ul>
                 </div>
                 <div className='category__right_row3'>
-                    <ul>
-                        <li>
+                    <ul className='d-flex justify-content-center'>
+                        {/* <li>
                             <a href=''>Learn About Tina</a>
-                        </li>
+                        </li> */}
                         <li>
-                            <a href=''>Meet With Tina
-                                <img src="/images/shopping_bag_icon.svg" alt="" /> </a>
+                            <a href='' 
+                            onClick={()=>handleBookappointment(id, picture, actualrate, name, timezone, type)}
+                            >Meet</a>
                         </li>
                     </ul>
-                    <table className='right_row3_table'>
+                    {/* <table className='right_row3_table'>
                         <tr>
                             <td><b>$0.80</b>  x <b>30 minute minimum</b></td>
                             <td><b> $24</b></td>
@@ -57,7 +79,7 @@ const index = () => {
                             <td className='total_colm'><b>Total</b></td>
                             <td className='total_colm'><b>$24.50</b></td>
                         </tr>
-                    </table>
+                    </table> */}
                     <p className='right_row3_tag'>
                         <img src="/images/report_icon.svg" alt="" />
                         Report this psychic
@@ -68,4 +90,4 @@ const index = () => {
     )
 }
 
-export default index
+export default Index

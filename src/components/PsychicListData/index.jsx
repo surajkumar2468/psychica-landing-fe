@@ -1,12 +1,30 @@
 import React, { useEffect, useState } from "react"; 
-
+import { useNavigate } from 'react-router-dom';
+import { useLocation } from "react-router-dom"; 
 
 
 const PsychicListData = ({professionalList}) => {
 
+  const navigate = useNavigate();
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+
   const promotedPsychics = professionalList.slice(0,2);
   const availablePsychic = professionalList.slice(2, professionalList.length);
 
+  const handleDetailsNavigation = (p_id) => {
+    console.log("ID",p_id)
+    const queryParams1 = {
+      type: queryParams.get('type'),
+    };
+
+    navigate({
+      pathname: `/psychicdetails/${p_id}`,
+      search: new URLSearchParams(queryParams1).toString(),
+    });
+  }
+
+  console.log("PROMOTE",promotedPsychics)
 
   return (
     <div className="container">
@@ -16,7 +34,9 @@ const PsychicListData = ({professionalList}) => {
         {
           promotedPsychics?.map((ele) => {
             return (
-              <div className="col-12 col-md-6">
+              <div className="col-12 col-md-6" 
+              onClick={()=>handleDetailsNavigation(ele?.id)}
+              >
                 <div className="home_sec3_main">
                   <span className="img__sec3">
                     <img src={ele?.picture} alt="" />
@@ -64,7 +84,7 @@ const PsychicListData = ({professionalList}) => {
         {
           availablePsychic?.map((ele) => {
             return (
-              <div className="col-12 col-md-4">
+              <div className="col-12 col-md-4" onClick={()=>handleDetailsNavigation(ele?.id)}>
                 <div className="home_sec3_main">
                   <span className="img__sec3">
                     <img src={ele?.picture} alt="" />

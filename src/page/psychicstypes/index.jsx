@@ -10,7 +10,7 @@ const Psychictypes = () => {
       .get(`${API_URLS.categoryType}`)
       .then((res) => {
         console.log("RESPONSE_API", res)
-        setExploreData(res)
+        setExploreData(res) 
       })
       .catch((err) => {
         console.log(err);
@@ -62,7 +62,7 @@ const Psychictypes = () => {
         </div>
       </div>
       {exploreType.map((item) => {
-        console.log("tsdgsadgywe", item)
+        console.log("ITEM", item)
         return (
           <>
             <TypeSlider _id={item._id} exploreData={item.list} />

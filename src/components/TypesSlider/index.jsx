@@ -58,6 +58,7 @@ const TypeSlider = ({ exploreData, _id }) => {
     ABILITIES: "Abilities",
     READING_TOPIC: "Reading Topics",
   };
+
   return (
     <div className="container">
       <div className="col-md-12">
@@ -79,7 +80,13 @@ const TypeSlider = ({ exploreData, _id }) => {
                     </div>
                     <div className={styles.box_footer}>
                       <h6>{item.name}</h6>
-                      <Link to="">
+                      <Link
+                        to={{
+                          pathname: '/professionallists',
+                          search: `type=${_id}&value=${item.name}`,
+
+                        }}
+                      >
                         Explore <AiOutlineRight />
                       </Link>
                     </div>

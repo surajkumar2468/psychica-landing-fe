@@ -21,6 +21,7 @@ import axiosInstance from "../../config/axiosinstance";
 import SearchIcon from "../../Resources/icons/SearchIcon";
 import { useLocation } from "react-router-dom";
 import { Dropdown } from "react-bootstrap";
+import { useParams } from "react-router-dom";
 
 
 const BookAppointment = ({ sceduleType }) => {
@@ -28,12 +29,13 @@ const BookAppointment = ({ sceduleType }) => {
   // const router = useRouter();
   const location = useLocation();
 
-  // const { id, type, timezone, name, price, picture } = new URLSearchParams(
-  //   location.search
-  // );
+  const { id, type, timezone, name, price, picture } = new URLSearchParams(
+    location.search
+  );
 
-  const id = '';
-  const timezone='Asia/Kolkata';
+  const params = useParams();
+  console.log("LOCATION",params)
+
 
   const [slots, setSlot] = useState([]);
   const [width, setWidth] = useState(0);
@@ -209,9 +211,7 @@ const BookAppointment = ({ sceduleType }) => {
           >
             <a
               className={styles.FNLink}
-              // href={`/client/appointment-future/${id}?&picture=${picture}&price=${price}&type=${type ? type : ""
-              //   }&name=${name}&timezone=${timezone}`}
-              href='/appointment-future'
+              href={`/appointment-future/${params.id}/${location.search}`}
             >
               Future
             </a>
@@ -224,9 +224,7 @@ const BookAppointment = ({ sceduleType }) => {
           >
             <a
               className={styles.FNLink}
-              // href={`/client/appointment-now/${id}?&picture=${picture}&price=${price}&type=${type ? type : ""
-              //   }&name=${name}&timezone=${timezone}`}
-              href='/appointment-now'
+              href={`/appointment-now/${params.id}/${location.search}`}
             >
               Today
             </a>

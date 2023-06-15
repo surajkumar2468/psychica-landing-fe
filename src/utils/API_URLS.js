@@ -1,7 +1,7 @@
 export const API_URLS = {
   baseURL: process.env.BASE_URL,
   categoryAll: "v1/category",
-  categoryType:"v1/category/type",
+  categoryType:"v1/category/type", 
   psychicDetails: "v1/users/professional/",
   psychicCategory: "v1/users/professional/",
   createSchedules: "v1/schedules",
