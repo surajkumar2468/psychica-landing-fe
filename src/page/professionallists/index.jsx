@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
-import { useLocation, useParams, useSearchParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import PsychicListData from "../../components/PsychicListData";
 
 const ProfessionalLists = () => {
   const searchParams = useLocation();
@@ -7,7 +8,12 @@ const ProfessionalLists = () => {
     console.log(searchParams.search);
   }, []);
   return (
-    <></>
+    <div className="home_sec3">
+      <div>
+
+      </div>
+      <PsychicListData />
+    </div>
     // <>
     //   {empty ? (
     //     <>

@@ -1,5 +1,6 @@
 import React from "react";
 import TypeSlider from "../../components/TypesSlider";
+import PsychicListData from "../../components/PsychicListData";
 
 const Landing = () => {
   return (
@@ -46,6 +47,9 @@ const Landing = () => {
         <TypeSlider />
       </section>
       <section className="home_sec3">
+        <PsychicListData />
+      </section>
+      {/* <section className="home_sec3">
         <div className="container">
           <h2>Explore Psychics</h2>
           <div className="row">
@@ -308,7 +312,7 @@ const Landing = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
       <div className="container">
         <section className="home_sec4">
           <div className="row">
