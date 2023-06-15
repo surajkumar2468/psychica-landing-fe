@@ -1,67 +1,95 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import styles from "./psychictype.module.css";
+import { Link } from "react-router-dom";
+import { AiOutlineRight } from "react-icons/ai";
+import classNames from "classnames";
+const TypeSlider = ({ exploreData, _id }) => {
+  console.log("exploreDataexploreData", exploreData);
 
-const TypeSlider = () => {
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    infinite: false,
+    responsive: [
+      {
+        breakpoint: 1220,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: false,
+        },
+      },
+      {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 576,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+
+
+  const RenderingNames = {
+    STYLES: "Styles",
+    TOOLS: "Tools",
+    ABILITIES: "Abilities",
+    READING_TOPIC: "Reading Topics",
+  };
   return (
     <div className="container">
-      <h2>Explore By Topic</h2>
-      <ul className="row">
-        <li className="col-12 col-md-3">
-          <div className="home_sec2_content">
-            <span>
-              <img src="/images/explore-topic-img1.jpg" alt="" />
-            </span>
-            <div>
-              <h4>Love</h4>
-              <a href="" className="explore_btn">
-                {" "}
-                Explore{" "}
-              </a>
-            </div>
-          </div>
-        </li>{" "}
-        <li className="col-12 col-md-3">
-          <div className="home_sec2_content">
-            <span>
-              <img src="/images/explore-topic-img1.jpg" alt="" />
-            </span>
-            <div>
-              <h4>Love</h4>
-              <a href="" className="explore_btn">
-                {" "}
-                Explore{" "}
-              </a>
-            </div>
-          </div>
-        </li>{" "}
-        <li className="col-12 col-md-3">
-          <div className="home_sec2_content">
-            <span>
-              <img src="/images/explore-topic-img1.jpg" alt="" />
-            </span>
-            <div>
-              <h4>Love</h4>
-              <a href="" className="explore_btn">
-                {" "}
-                Explore{" "}
-              </a>
-            </div>
-          </div>
-        </li>{" "}
-        <li className="col-12 col-md-3">
-          <div className="home_sec2_content">
-            <span>
-              <img src="/images/explore-topic-img1.jpg" alt="" />
-            </span>
-            <div>
-              <h4>Love</h4>
-              <a href="" className="explore_btn">
-                {" "}
-                Explore{" "}
-              </a>
-            </div>
-          </div>
-        </li>
-      </ul>
+      <div className="col-md-12">
+        <p className={classNames(styles.subtitle, "pt-3 pb-1")}>
+          {RenderingNames[_id]}
+        </p>
+        <div className="slider">
+          <Slider {...settings}>
+            {exploreData?.map((item) => {
+              console.log("DATA_RENDER", item);
+              return (
+                <>
+                  <div className={styles.first_slide}>
+                    <div className={styles.main_box}>
+                      <p>{"IX"}</p>
+                      <div className={styles.cent_img}>
+                        <img src={item.image} alt="img-exp" />
+                      </div>
+                    </div>
+                    <div className={styles.box_footer}>
+                      <h6>{item.name}</h6>
+                      <Link to="">
+                        Explore <AiOutlineRight />
+                      </Link>
+                    </div>
+                  </div>
+                </>
+              );
+            })}
+          </Slider>
+        </div>
+      </div>
     </div>
   );
 };

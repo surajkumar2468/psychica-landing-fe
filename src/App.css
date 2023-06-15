@@ -973,5 +973,7 @@ ul.psychic_details2_ul li img{ margin-right: 8px;}
     display: flex;
     margin: 0 auto;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);}
+.slick-slide {
+  width: 284px !important;
 }

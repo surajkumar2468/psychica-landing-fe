@@ -7,23 +7,37 @@ import axiosInstance from "../../config/axiosinstance";
 const Landing = () => {
 
   const [professionalList, setProfessionalList] = useState([]);
+  const [exploreData, setExploreData] = useState([]);
 
   const getPsychicList = async () => {
     axiosInstance
       .get(API_URLS.explorePsychic)
       .then((res) => {
-        if(res) {
+        if (res) {
           setProfessionalList(res);
         }
       })
       .catch((err) => {
         console.warn(err);
+      })
+  }
+  
+  const getCategory = async () => {
+    await axiosInstance
+      .get(`${API_URLS.categoryAll}`)
+      .then((res) => {
+        console.log("RESPONSE_API", res)
+        setExploreData(res)
+      })
+      .catch((err) => {
+        console.log(err);
       });
   };
 
   useEffect(() => {
     getPsychicList();
-  }, [])
+    getCategory();
+  }, []);
 
   return (
     <div className="App">
@@ -66,12 +80,22 @@ const Landing = () => {
         </section>
       </div>
       <section className="home_sec2">
-        <TypeSlider />
+        {/* {
+          exploreData?.map((item)=>{
+            console.log("ITEM_DATA",item)
+            return(
+              <> */}
+        <TypeSlider exploreData={exploreData} />
+        {/* </> */}
+        {/* )
+          })
+        } */}
+        {/* <TypeSlider  /> */}
       </section>
       <section className="home_sec3">
         <PsychicListData professionalList={professionalList} />
       </section>
-      
+
       <div className="container">
         <section className="home_sec4">
           <div className="row">

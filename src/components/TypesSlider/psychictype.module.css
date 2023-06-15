@@ -62,6 +62,9 @@
   font-size: 14px;
   color: #23262f;
   text-decoration: none;
+  width: 122px;
+  margin: 0 auto;
+  /* margin-top: 10px; */
 }
 .box_footer > a > svg {
   font-weight: bolder;
@@ -242,6 +245,6 @@
   font-weight: 700;
   font-size: 20px;
   color: #9ea3ae;
-  margin: 3.4rem 0px 1.6rem;
+  margin: 2rem 0px 1.6rem;
   font-family: "nexa-Bold";
 }

@@ -34,10 +34,10 @@ const Header = () => {
           <div className="hrd_btn">
             <ul>
               <li>
-                <a href="">Login</a>
+                <a href="https://psychica.seekware.tech/client/login" target="_blank">Login</a>
               </li>
               <li>
-                <a href="">Signup </a>
+                <a href="https://psychica.seekware.tech/client/signup" target="_blank">Signup </a>
               </li>
             </ul>
           </div>
