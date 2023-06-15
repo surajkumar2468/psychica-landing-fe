@@ -4,22 +4,74 @@ import { API_URLS } from "../../utils/API_URLS";
 import TypeSlider from "../../components/TypesSlider";
 
 const Psychictypes = () => {
-  const [exploreData, setExploreData] = useState([]);
-  useEffect(() => {
-    axiosInstance
-      .get(API_URLS.categoryType)
+  const [exploreType, setExploreData] = useState([]);
+  const getCategory = async () => {
+    await axiosInstance
+      .get(`${API_URLS.categoryType}`)
       .then((res) => {
-        console.log(res);
-        setExploreData(res);
+        console.log("RESPONSE_API", res)
+        setExploreData(res)
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    getCategory();
   }, []);
+
+  const SlideData = [
+    {
+      id: 1,
+      img: "/images/ExploreImages/love.png",
+      mainName: "Love",
+      btnName: "Explore",
+      link: "/category",
+      romanNum: "I",
+    },
+    {
+      id: 2,
+      img: "/images/ExploreImages/career.png",
+      mainName: "Career",
+      btnName: "Explore",
+      romanNum: "I",
+    },
+    {
+      id: 3,
+      img: "/images/ExploreImages/lifepath.png",
+      mainName: "Life Path",
+      btnName: "Explore",
+      romanNum: "XI",
+    },
+    {
+      id: 4,
+      img: "/images/ExploreImages/money.png",
+      mainName: "Money",
+      btnName: "Explore",
+      romanNum: "III",
+    },
+  ];
   return (
     <div className="home_sec3">
-      <TypeSlider />
-      <TypeSlider />
-      <TypeSlider />
-      <TypeSlider />
+      <div className="container">
+        <div className="row">
+          <div className="col-md-12">
+            <h2>Explore Psychics</h2>
+          </div>
+        </div>
+      </div>
+      {exploreType.map((item) => {
+        console.log("tsdgsadgywe", item)
+        return (
+          <>
+            <TypeSlider _id={item._id} exploreData={item.list} />
+          </>
+        )
+      })}
+      {/* <TypeSlider subHeading="Explore By Ability" />
+      <TypeSlider subHeading="Explore By Tools" />
+      <TypeSlider subHeading="Explore By Style" /> */}
       {/* <section className={styles.wrapper_main}>
         <div className={classNames(styles.cntr_main, "container-fluid")}>
           <div className="row">

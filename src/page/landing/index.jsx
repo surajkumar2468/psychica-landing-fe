@@ -1,8 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import TypeSlider from "../../components/TypesSlider";
 import PsychicListData from "../../components/PsychicListData";
+import axiosInstance from "../../config/axiosinstance";
+import { API_URLS } from "../../utils/API_URLS";
 
 const Landing = () => {
+  const [exploreData, setExploreData] = useState([]);
+
+    const getCategory = async () => {
+    await axiosInstance
+      .get(`${API_URLS.categoryAll}`)
+      .then((res) => {
+       console.log("RESPONSE_API",res)
+       setExploreData(res)
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    getCategory();
+  }, []);
   return (
     <div className="App">
       <div className="container">
@@ -44,7 +63,17 @@ const Landing = () => {
         </section>
       </div>
       <section className="home_sec2">
-        <TypeSlider />
+        {/* {
+          exploreData?.map((item)=>{
+            console.log("ITEM_DATA",item)
+            return(
+              <> */}
+              <TypeSlider  exploreData={exploreData} />
+              {/* </> */}
+            {/* )
+          })
+        } */}
+        {/* <TypeSlider  /> */}
       </section>
       <section className="home_sec3">
         <PsychicListData />

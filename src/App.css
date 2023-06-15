@@ -820,3 +820,6 @@ span.ftr_img {
 .ftr_bottom_row ul {
   display: flex;
 }
+.slick-slide {
+  width: 284px !important;
+}
