@@ -7,8 +7,6 @@ import { Link } from "react-router-dom";
 import { AiOutlineRight } from "react-icons/ai";
 import classNames from "classnames";
 const TypeSlider = ({ exploreData, _id }) => {
-  console.log("exploreDataexploreData", exploreData);
-
   const settings = {
     dots: false,
     infinite: true,
@@ -68,7 +66,6 @@ const TypeSlider = ({ exploreData, _id }) => {
         <div className="slider">
           <Slider {...settings}>
             {exploreData?.map((item) => {
-              console.log("DATA_RENDER", item);
               return (
                 <>
                   <div className={styles.first_slide}>
@@ -83,7 +80,7 @@ const TypeSlider = ({ exploreData, _id }) => {
                       <Link
                         to={{
                           pathname: '/professionallists',
-                          search: `type=${_id}&value=${item.name}`,
+                          search: `type=${item?.type}&value=${item.name}`,
 
                         }}
                       >

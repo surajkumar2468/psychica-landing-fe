@@ -28,7 +28,7 @@ const Index = ({actualrate, reviewcount, actualrating, name, picture, id, timezo
                 <div className='category__right_row1'>
                     <div>
                         <h3> ${`${actualrate}`} <small>/minute</small></h3>
-                        <div className='star__rating'><img src="/images/star-icon.svg" alt="" /> {`${actualrating}`} <i>{`(${reviewcount} reviews)`}</i></div>
+                        <div className='star__rating'><img src="/images/star-icon.svg" alt="" /> {`${actualrating === null ? 0 : actualrating}`} <i>{`(${reviewcount} reviews)`}</i></div>
                     </div>
                     <div className='star__img'>
                         <img src="/images/pexels-pavel-danilyuk2.png" alt="" />
@@ -80,10 +80,6 @@ const Index = ({actualrate, reviewcount, actualrating, name, picture, id, timezo
                             <td className='total_colm'><b>$24.50</b></td>
                         </tr>
                     </table> */}
-                    <p className='right_row3_tag'>
-                        <img src="/images/report_icon.svg" alt="" />
-                        Report this psychic
-                    </p>
                 </div>
             </div>
         </div>

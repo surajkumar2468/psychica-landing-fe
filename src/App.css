@@ -312,24 +312,25 @@ header.header {
   padding-right: 40px;
   margin-right: 40px;
 }
-.hrd_select select {
+.hrd_select {
   color: #3b71fe;
   border: 0;
   font-size: 14px;
   font-family: "nexa_boldregular";
   appearance: none;
   width: 100%;
+  cursor: pointer;
 }
-.hrd_select select option {
+/* .hrd_select select option {
   color: #000;
   font-family: "poppinsregular";
-}
+} */
 .hrd_select {
   width: 130px;
   position: relative;
   margin-right: 47px;
 }
-.hrd_select:before {
+/* .hrd_select:before {
   content: "";
   background-image: url("/public/images/arrow_down.svg");
   width: 10px;
@@ -338,7 +339,7 @@ header.header {
   top: 10px;
   pointer-events: none;
   position: absolute;
-}
+} */
 .hrd_menu ul {
   display: flex;
   align-items: center;
@@ -575,6 +576,7 @@ header.header {
 }
 .img__sec3 img {
   width: 100%;
+  object-fit: cover;
 }
 .img__sec3 b {
   color: #23262f;
@@ -931,15 +933,15 @@ span.ftr_img {
 .category__right_row3 { padding-top: 32px; display: flow-root; width: 100%;}
 .category__right_row3 ul{ display: flex;    justify-content: space-between;}
 .category__right_row3 ul li{ width: 48%;}
-.category__right_row3 ul li a{ width: 100%;   border: 2px solid #E6E8EC;font-size: 16px; color: #23262F;display: flex; justify-content: center; align-items: center; font-family: 'nexa_boldregular'; padding:10px 10px; border-radius: 90px;}
-.category__right_row3 ul li:last-child a{    border: 2px solid #3B71FE; font-size: 16px; color: #fff;
+.category__right_row3 ul li a{ width: 100%;   background-color: #3B71FE ;font-size: 16px; color: #fff; display: flex; justify-content: center; align-items: center; font-family: 'nexa_boldregular'; padding:10px 10px; border-radius: 90px; cursor: pointer;}
+.category__right_row3 ul li:last-child button{ width: 100%;   border: 2px solid #3B71FE; font-size: 16px; color: #fff;
 font-family: 'nexa_boldregular';
   padding:10px 10px;border-radius: 90px;background: #3B71FE;}
   .category__right_row3 ul li:last-child a img{ margin-left:8px;}
   .right_row3_tag { display: flex; justify-content: center; align-items: center; margin: 0; padding-top: 30px;}
   .right_row3_tag img{ margin-right: 8px;}
   .psychic_details{margin-top: 115px; overflow: initial;}
-.back_btn a {display: flex; align-items: center;  color: #4D5461;  font-family: 'nexa_boldregular';}
+.back_btn a {display: flex; align-items: center;  color: #4D5461;  font-family: 'nexa_boldregular'; cursor: pointer;}
   .back_btn a img{ margin-right:8px; }
   .back_btn{ padding-bottom:15px;}
 .psychic_details video{ width: 100%; display: block;}
@@ -952,8 +954,11 @@ img.shape_star {
 .psychic_details2{ padding-top: 85px;}
 .psychic_details2_left h2 { color: #23262F;letter-spacing: -0.01em; font-size: 32px;border-bottom: 1px solid #E6E8EC; padding-bottom: 20px; margin-bottom: 25px;}
 ul.psychic_details2_ul { display: flex; align-items: center; padding-bottom: 40px;}
-ul.psychic_details2_ul li {display: flex;align-items: center;color: #777E91;font-size: 13.5px;    margin-right: 20px;}
-ul.psychic_details2_ul li img{ margin-right: 8px;}
+ul.psychic_details2_ul li {display: flex;align-items: center;color: #777E91;font-size: 13.5px;    margin-right: 20px;margin-bottom: 8px;}
+ul.psychic_details2_ul li img{ margin-right: 8px;
+  width: 16px;
+  height: 16px;
+  object-fit: contain;}
 .psychic_details2_left h3{color: #23262F;font-size: 24px; padding-bottom: 30px; padding-top: 20px;}
 .psychic_details2_ul2 {display: flex;    flex-wrap: wrap; }
 .psychic_details2_ul2 li{ width:45%;color: #777E91;font-family: 'nexa_boldregular'; display: flex;align-items: center; padding-bottom: 25px;}
@@ -1009,4 +1014,14 @@ ul.psychic_details2_ul li img{ margin-right: 8px;}
 
 .justify-content-center {
   justify-content: center !important;
+}
+
+.btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active{
+  background-color: #fff !important;
+}
+
+.learn_about {
+  background-color: #fff !important;
+  border: 1px solid rgb(174, 172, 172);
+  color: rgb(171, 169, 169) !important;
 }

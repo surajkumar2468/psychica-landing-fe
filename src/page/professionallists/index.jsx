@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom"; 
+import { useLocation } from "react-router-dom";
 import PsychicListData from "../../components/PsychicListData";
 import axiosInstance from "../../config/axiosinstance";
 import { API_URLS } from "../../utils/API_URLS";
 import { useNavigate } from 'react-router-dom';
+
 
 
 const ProfessionalLists = () => {
@@ -33,6 +34,7 @@ const ProfessionalLists = () => {
   }, [])
 
   const handleBookappointment = (id, picture, price, type, name, timezone) => {
+    console.log("PARAMS", id, picture, price, name, timezone);
     const queryParams = {
       picture: picture ? picture?.replace("https://", "") : "",
       price: price,
@@ -46,7 +48,6 @@ const ProfessionalLists = () => {
       search: new URLSearchParams(queryParams).toString(),
     });
   }
-
 
   return (
     <div>
@@ -73,8 +74,15 @@ const ProfessionalLists = () => {
                         }
                       </p>
                     </div>
-                    <div className='img_explore_sec'>
+                    {/* <div className='img_explore_sec'>
                       <img src={recommendedPsychic?.picture} alt="" />
+                      <p><img src="/images/check_icon.svg" alt="" />
+                        Recommended By Staff</p>
+                    </div> */}
+                    <div className='img_explore_sec'>
+                      <span className='main_img_explore'><img src={recommendedPsychic?.picture} className='img_explore_blur' alt="" />
+                        <span className='center_img_explore'>  <img src={recommendedPsychic?.picture} alt="" /> </span>
+                      </span>
                       <p><img src="/images/check_icon.svg" alt="" />
                         Recommended By Staff</p>
                     </div>
@@ -111,20 +119,15 @@ const ProfessionalLists = () => {
                       <div className='category__right_row3'>
                         <ul>
                           <li>
-                            <a href=''>Learn About {recommendedPsychic?.first_name}</a>
+                            <a href='' className='learn_about'>Learn About {recommendedPsychic?.first_name}</a>
                           </li>
                           <li>
-                            <a
-                              // href={`/appointment-now/${recommendedPsychic?.id}/${recommendedPsychic?.picture}`}
-                              onClick={()=>handleBookappointment(recommendedPsychic?.id, recommendedPsychic?.picture, recommendedPsychic?.price, recommendedPsychic?.type, recommendedPsychic?.first_name, recommendedPsychic?.timezone)}
+                            <button
+                              onClick={() => handleBookappointment(recommendedPsychic?.id, recommendedPsychic?.picture, recommendedPsychic?.actual_rate, queryParams.get('type'), recommendedPsychic?.first_name, recommendedPsychic?.timezone)}
                             >
-                              Meet</a>
+                              Meet</button>
                           </li>
                         </ul>
-                        <p className='right_row3_tag'>
-                          <img src="/images/report_icon.svg" alt="" />
-                          Report this psychic
-                        </p>
                       </div>
                     </div>
                   </div>

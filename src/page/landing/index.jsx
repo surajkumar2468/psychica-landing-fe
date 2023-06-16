@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import TypeSlider from "../../components/TypesSlider";
 import PsychicListData from "../../components/PsychicListData";
 import { API_URLS } from "../../utils/API_URLS";
-import axiosInstance from "../../config/axiosinstance";
+import axiosInstance from "../../config/axiosinstance"; 
 
 const Landing = () => {
 
@@ -15,6 +15,7 @@ const Landing = () => {
       .then((res) => {
         if (res) {
           setProfessionalList(res);
+          console.log("PROFESSIONALS",res);
         }
       })
       .catch((err) => {
@@ -93,7 +94,7 @@ const Landing = () => {
         {/* <TypeSlider  /> */}
       </section>
       <section className="home_sec3">
-        <PsychicListData professionalList={professionalList} />
+        <PsychicListData professionalList={professionalList} from='landing' />
       </section>
 
       <div className="container">

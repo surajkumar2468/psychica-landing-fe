@@ -4,10 +4,21 @@ import BookAppointment from "../../components/bookAppointment/BookAppointment";
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
+
 const Appointment = () => {
   const [width, setWidth] = useState(0);
   const handleResize = () => setWidth(window.innerWidth);
   const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+
+  const queryData = {
+    type: queryParams.get('type'),
+    timezone: queryParams.get('timezone'),
+    name: queryParams.get('name'),
+    price: queryParams.get('price'),
+    picture: queryParams.get('picture'),
+  }
+  
 
   const appointmentNowData = {
     image: "",
@@ -40,21 +51,21 @@ const Appointment = () => {
             </div>
 
             <div className={styles.backgroundPadding}>
-              <div className={styles.nowBG}>
+              <div className={location.pathname.includes('/appointment-future') ? styles.nowBG : styles.futureBG}>
                 <div className={styles.BGContent}>
                   <h1>{location.pathname.includes('/appointment-future') ? appointmentFutureData?.pageHeading : appointmentNowData?.pageHeading}</h1>
-                  <p className="mb-0">Book an appointment with name now.</p>
+                  <p className="mb-0">Book an appointment with {queryData.name} now.</p>
                   <span className={styles.bookTimeZone}>
-                    Name's Timezone : timezone
+                    {queryData.name}'s Timezone : {queryData.timezone}
                   </span>
                 </div>
                 {width > 1024 ? (
                   <div className={styles.BAContainer}>
                     {
                       location.pathname.includes('/appointment-future') ?
-                      <BookAppointment sceduleType="future" />
+                      <BookAppointment sceduleType="future" queryData={queryData} />
                       :
-                      <BookAppointment sceduleType="now" />
+                      <BookAppointment sceduleType="now" queryData={queryData} />
                     }
                   </div>
                 ) : null}

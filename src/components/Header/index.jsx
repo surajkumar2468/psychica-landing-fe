@@ -1,23 +1,18 @@
 import React from "react";
 
 const Header = () => {
+
+
   return (
     <header className="header">
       <div className="container">
         <div className="row_hrd">
           <div className="logo">
-            <a href="">
+            <a href="/">
               <img src="/images/logo.svg" alt="" />
             </a>
           </div>
-          <div className="hrd_select">
-            <select name="" id="">
-              <option value="">Explore Psychics</option>
-              <option value="">Explore Psychics</option>
-              <option value="">Explore Psychics</option>
-              <option value="">Explore Psychics</option>
-            </select>
-          </div>
+          <a href="/psychictype" className="hrd_select">Explore Psychics</a>
           <div className="hrd_menu">
             <ul>
               <li>
@@ -36,7 +31,7 @@ const Header = () => {
               {localStorage.getItem("token") ? (
                 <li>
                   <a
-                    href={`http://localhost:3001/client/dashboard?token=${localStorage.getItem(
+                    href={`https://psychica.seekware.tech/client/dashboard?token=${localStorage.getItem(
                       "token"
                     )}&refreshToken=${localStorage.getItem(
                       "userTokenRefresh"

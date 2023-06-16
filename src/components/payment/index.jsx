@@ -105,7 +105,7 @@ export default function Payment({
             setAmountValue(false);
           }
           window.open(
-            `http://localhost:3001/client/appointment-successful?id=${
+            `https://psychica.seekware.tech/client/appointment-successful?id=${
               res?.id
             }&total_amount=${
               res?.amount_paid

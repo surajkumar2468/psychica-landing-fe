@@ -22,20 +22,18 @@ import SearchIcon from "../../Resources/icons/SearchIcon";
 import { useLocation } from "react-router-dom";
 import { Dropdown } from "react-bootstrap";
 import { useParams } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 
-const BookAppointment = ({ sceduleType }) => {
+const BookAppointment = ({ sceduleType, queryData }) => {
   const currELe = useRef(null);
-  // const router = useRouter();
   const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const navigate = useNavigate();
 
-  const { id, type, timezone, name, price, picture } = new URLSearchParams(
-    location.search
-  );
+  console.log("QUEYR",queryData)
 
-  const params = useParams();
-  console.log("LOCATION",params)
-
+  const { id } = useParams();
 
   const [slots, setSlot] = useState([]);
   const [width, setWidth] = useState(0);
@@ -72,10 +70,10 @@ const BookAppointment = ({ sceduleType }) => {
     setSchedule({ ...schedule, professional: id });
   }, []);
   useEffect(() => {
-    if (id && timezone) {
+    if (id && queryData?.timezone) {
       getSlots();
     }
-  }, [schedule?.start_date, id, timezone]);
+  }, [schedule?.start_date, id, queryData?.timezone]);
 
 
   const handleAPIcall = () => {
@@ -86,9 +84,9 @@ const BookAppointment = ({ sceduleType }) => {
         .post(`${API_URLS.checkSlot}${params.slotId}`)
         .then((res) => {
           setLoader(false);
-          // router.push(
-          //   `/client/payment/?id=${id}&type=${type}&schedule_type=${sceduleType}&picture=${picture}&appointment_type=${schedule.meeting_type}&price=${price}&name=${name}&date=${schedule.start_time}&start_time=${schedule.start_time}&end_time=${schedule.end_time}&slotId=${params.slotId}&duration=${params.duration}`
-          // );
+          navigate(
+            `/scheduleappointment?id=${id}&type=${queryData?.type}&schedule_type=${sceduleType}&picture=${queryData?.picture}&appointment_type=${schedule.meeting_type}&price=${queryData?.price}&name=${queryData?.name}&date=${schedule.start_time}&start_time=${schedule.start_time}&end_time=${schedule.end_time}&slotId=${params.slotId}&duration=${params.duration}`
+          );
         })
         .catch((err) => {
           setLoader(false);
@@ -159,7 +157,7 @@ const BookAppointment = ({ sceduleType }) => {
       .get(
         `${API_URLS.availableSlots}${id}?start_date=${convertToCurrentTimeZone(
           dataValue.toISOString()
-        )}&timezone=${timezone}`
+        )}&timezone=${queryData?.timezone}`
       )
       .then((res) => {
         setSlot(res);
@@ -205,26 +203,26 @@ const BookAppointment = ({ sceduleType }) => {
         <div className={`${styles.time} d-flex gap-5`}>
           <div
             className={`${
-              location.pathname === `/appointment-future` ?
+              location.pathname.includes('/appointment-future') ?
               styles.active
               : "" }`}
           >
             <a
               className={styles.FNLink}
-              href={`/appointment-future/${params.id}/${location.search}`}
+              href={`/appointment-future/${id}/${location.search}`}
             >
               Future
             </a>
           </div>
           <div
             className={`${
-              location.pathname === `/appointment-now` ?
+              location.pathname.includes('/appointment-now') ?
               styles.active
               : "" }`}
           >
             <a
               className={styles.FNLink}
-              href={`/appointment-now/${params.id}/${location.search}`}
+              href={`/appointment-now/${id}/${location.search}`}
             >
               Today
             </a>
@@ -348,9 +346,9 @@ const BookAppointment = ({ sceduleType }) => {
                         } mb-2`}
                       key={idx}
                     >
-                      <span className={`${styles.listItem}`}>
+                      <p className={`${styles.listItem}`}>
                         {convertUnixToHumanReadableTime(ele.start_date)}
-                      </span>
+                      </p>
                     </Dropdown.Item>
                   );
                 })}
