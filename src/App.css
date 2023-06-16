@@ -313,7 +313,7 @@ header.header {
   margin-right: 40px;
 }
 .hrd_select {
-  color: #3b71fe;
+  color: #23262f !important;
   border: 0;
   font-size: 14px;
   font-family: "nexa_boldregular";
@@ -1966,3 +1966,6 @@ section.under_development_sec {
   max-height: 400px;
 }
 
+.active {
+  color: #3b71fe !important;
+}
