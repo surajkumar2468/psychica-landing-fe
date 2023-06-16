@@ -1585,3 +1585,8 @@ span.center_img_explore {
   width: 65px;
   object-fit: cover;
 }
+
+.proffesional-card-img {
+  height: 65px;
+  width: 65px;
+}
