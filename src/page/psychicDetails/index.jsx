@@ -54,9 +54,9 @@ const Index = () => {
                     Back to {" "}
                     {
                       queryParams.get('previous') ? queryParams.get('previous') :
-                        queryParams.get('type').charAt(0).toUpperCase() + queryParams.get('type').slice(1).toLowerCase()
+                        queryParams.get('type').charAt(0).toUpperCase() + queryParams.get('type').slice(1).toLowerCase()+ " Psychics"
                     }
-                    {" "}Psychics</a>
+                    </a>
                 </div>
                 <div className='img_explore_sec'>
                   <span className='main_img_explore'><img src={details?.picture} className='img_explore_blur' alt="" />
