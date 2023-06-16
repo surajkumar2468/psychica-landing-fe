@@ -254,3 +254,7 @@
   margin: 3.4rem 0px 1.6rem;
   font-family: "nexa-Bold";
 }
+
+.slick-slide {
+  width: 284px !important;
+}
