@@ -109,7 +109,7 @@ export const getQueryParamsAsObject = (qs) => {
       obj[key] = params.get(key);
     }
   }
-  console.log(obj)
+  console.log(obj);
   return obj;
 };
 
@@ -167,11 +167,10 @@ export function convertUnixToHumanReadable(unixdate) {
  * @returns date in 11 Jan 2023 format with the user timeStamp
  */
 
-export function convertUnixToHumanReadableDate(unixdate) {
+export function convertUnixToHumanReadableDate(unixdate, timezone) {
   try {
     let timezone = "Asia/Kolkata";
     if (typeof window !== "undefined") {
-      timezone = JSON.parse(localStorage.getItem("userInfo")).timezone;
       if (timezone === "Asia/Calcutta") {
         timezone = "Asia/Kolkata";
       }
@@ -210,11 +209,10 @@ export function convertUnixToHumanReadableDate(unixdate) {
  * @returns date in 11:30 AM format with the user timeStamp
  */
 
-export function convertUnixToHumanReadableTime(unixdate) {
+export function convertUnixToHumanReadableTime(unixdate, timezone) {
   try {
     let timezone = "Asia/Kolkata";
     if (typeof window !== "undefined") {
-      timezone = JSON.parse(localStorage.getItem("userInfo")).timezone;
       if (timezone === "Asia/Calcutta") {
         timezone = "Asia/Kolkata";
       }

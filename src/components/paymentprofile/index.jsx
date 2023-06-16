@@ -19,6 +19,7 @@ const PaymentProfile = ({ profRateInfo }) => {
     name,
     date,
     start_time,
+    timezone,
     end_time,
     slotId,
     duration,
@@ -46,7 +47,7 @@ const PaymentProfile = ({ profRateInfo }) => {
           </span>
           <div>
             <p>Appointment Date</p>
-            <h6>{convertUnixToHumanReadableDate(start_time)}</h6>
+            <h6>{convertUnixToHumanReadableDate(start_time, timezone)}</h6>
           </div>
         </div>
         <div className={`${styles.sec}  d-flex gap-3`}>

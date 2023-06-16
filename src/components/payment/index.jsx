@@ -45,6 +45,7 @@ export default function Payment({
     appointment_type,
     schedule_type,
     picture,
+    timezone,
     slotId,
     setAmountValue,
     name,
@@ -107,7 +108,7 @@ export default function Payment({
           window.open(
             `https://psychica.seekware.tech/client/appointment-successful?id=${
               res?.id
-            }&total_amount=${
+            }&timezone=${timezone}&total_amount=${
               res?.amount_paid
             }&type=${type}&schedule_type=${schedule_type}&picture=${picture}&appointment_type=${appointment_type}&duration=${duration}&name=${name}&date=${start_time}&token=${localStorage.getItem(
               "token"

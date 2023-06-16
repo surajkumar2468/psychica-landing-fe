@@ -22,8 +22,7 @@ import SearchIcon from "../../Resources/icons/SearchIcon";
 import { useLocation } from "react-router-dom";
 import { Dropdown } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import { useNavigate } from 'react-router-dom';
-
+import { useNavigate } from "react-router-dom";
 
 const BookAppointment = ({ sceduleType, queryData }) => {
   const currELe = useRef(null);
@@ -31,7 +30,7 @@ const BookAppointment = ({ sceduleType, queryData }) => {
   const queryParams = new URLSearchParams(location.search);
   const navigate = useNavigate();
 
-  console.log("QUEYR",queryData)
+  console.log("QUEYR", queryData);
 
   const { id } = useParams();
 
@@ -55,8 +54,6 @@ const BookAppointment = ({ sceduleType, queryData }) => {
     label: "...",
   });
 
-
-
   const [schedule, setSchedule] = useState({
     professional: "",
     meeting_type: "",
@@ -75,7 +72,6 @@ const BookAppointment = ({ sceduleType, queryData }) => {
     }
   }, [schedule?.start_date, id, queryData?.timezone]);
 
-
   const handleAPIcall = () => {
     const params = { ...schedule };
     if (id && schedule?.meeting_type && schedule?.slotId) {
@@ -85,7 +81,7 @@ const BookAppointment = ({ sceduleType, queryData }) => {
         .then((res) => {
           setLoader(false);
           navigate(
-            `/scheduleappointment?id=${id}&type=${queryData?.type}&schedule_type=${sceduleType}&picture=${queryData?.picture}&appointment_type=${schedule.meeting_type}&price=${queryData?.price}&name=${queryData?.name}&date=${schedule.start_time}&start_time=${schedule.start_time}&end_time=${schedule.end_time}&slotId=${params.slotId}&duration=${params.duration}`
+            `/scheduleappointment?id=${id}&type=${queryData?.type}&schedule_type=${sceduleType}&picture=${queryData?.picture}&appointment_type=${schedule.meeting_type}&price=${queryData?.price}&name=${queryData?.name}&date=${schedule.start_time}&start_time=${schedule.start_time}&end_time=${schedule.end_time}&slotId=${params.slotId}&duration=${params.duration}&timezone=${queryData?.timezone}`
           );
         })
         .catch((err) => {
@@ -203,9 +199,10 @@ const BookAppointment = ({ sceduleType, queryData }) => {
         <div className={`${styles.time} d-flex gap-5`}>
           <div
             className={`${
-              location.pathname.includes('/appointment-future') ?
-              styles.active
-              : "" }`}
+              location.pathname.includes("/appointment-future")
+                ? styles.active
+                : ""
+            }`}
           >
             <a
               className={styles.FNLink}
@@ -216,9 +213,10 @@ const BookAppointment = ({ sceduleType, queryData }) => {
           </div>
           <div
             className={`${
-              location.pathname.includes('/appointment-now') ?
-              styles.active
-              : "" }`}
+              location.pathname.includes("/appointment-now")
+                ? styles.active
+                : ""
+            }`}
           >
             <a
               className={styles.FNLink}
@@ -232,10 +230,71 @@ const BookAppointment = ({ sceduleType, queryData }) => {
         <div
           className={`d-flex justify-content-between flex-wrap ${styles.secContainer}`}
         >
-          <Dropdown className={`${styles.sectionWrapper1}`} onClick={()=> setOpenDropdown(!openDropdown)}>
+          <div className={styles.sectionWrapper1}>
+            <div
+              className={"d-flex gap-3  -toggle " + styles.section}
+              data-bs-toggle="dropdown"
+              id="dropdownMenuButton1"
+              aria-expanded="false"
+            >
+              <span>
+                <Meeting />
+              </span>
+              <div className="d-flex flex-column ">
+                <h5>Meeting Type</h5>
+                <span>{meeting.label}</span>
+              </div>
+            </div>
+
+            <ul
+              aria-labelledby="dropdownMenuButton1"
+              className={"dropdown-menu " + styles.DDList}
+            >
+              {/* <li
+                onClick={() => {
+                  setMeeting({ ...meeting, label: "Telephone" });
+                  setSchedule({ ...schedule, meeting_type: "telephone" });
+                }}
+              >
+                <span className={styles.iconContainer}>
+                  <Call />
+                </span>
+                <span className={styles.listItem}>
+                  Appointment via Telephone
+                </span>
+              </li> */}
+              <li
+                onClick={() => {
+                  setMeeting({ ...meeting, label: "Computer Audio" });
+                  setSchedule({ ...schedule, meeting_type: "audio" });
+                }}
+              >
+                <span className={styles.iconContainer}>
+                  <Message />
+                </span>
+                <span className={styles.listItem}>
+                  Appointment via Computer Audio
+                </span>
+              </li>
+              <li
+                onClick={() => {
+                  setMeeting({ ...meeting, label: "Video" });
+                  setSchedule({ ...schedule, meeting_type: "video" });
+                }}
+              >
+                <span className={styles.iconContainer}>
+                  <AppVideo />
+                </span>
+                <span className={styles.listItem}>Appointment via Video</span>
+              </li>
+            </ul>
+          </div>
+          {/* <Dropdown
+            className={`${styles.sectionWrapper1}`}
+            onClick={() => setOpenDropdown(!openDropdown)}
+          >
             <Dropdown.Toggle
               className={"d-flex gap-3 dropdown-toggle " + styles.section}
-
             >
               <span>
                 <Meeting />
@@ -247,7 +306,9 @@ const BookAppointment = ({ sceduleType, queryData }) => {
             </Dropdown.Toggle>
 
             <Dropdown.Menu
-              className={`${styles.DDList} ${openDropdown ? styles.showDropdown : styles.hideDropdown}`}
+              className={`${styles.DDList} ${
+                openDropdown ? styles.showDropdown : styles.hideDropdown
+              }`}
             >
               <Dropdown.Item
                 onClick={() => {
@@ -274,8 +335,7 @@ const BookAppointment = ({ sceduleType, queryData }) => {
                 <span className={styles.listItem}>Appointment via Video</span>
               </Dropdown.Item>
             </Dropdown.Menu>
-          </Dropdown>
-
+          </Dropdown> */}
 
           <div className={`${styles.sectionWrapper1}`}>
             <DatePicker
@@ -285,7 +345,7 @@ const BookAppointment = ({ sceduleType, queryData }) => {
               calendarClassName="book-appointment-date"
               wrapperClassName={` ${styles.calendarWrapper}`}
               popperPlacement="top"
-              disabled={sceduleType === 'now'}
+              disabled={sceduleType === "now"}
               // disabled={schedule?.schedule_type === "now"}
               minDate={moment().toDate()}
               customInput={
@@ -314,10 +374,11 @@ const BookAppointment = ({ sceduleType, queryData }) => {
             />
           </div>
 
-          <Dropdown className={styles.sectionWrapper2}>
-            <Dropdown.Toggle
-              className={` d-flex gap-3 ${slots?.length <= 0 && "disabled"} ${schedule?.schedule_type !== "now" ? "dropdown-toggle" : ""
-                }
+          <div className={styles.sectionWrapper2}>
+            <div
+              className={` d-flex gap-3 ${slots?.length <= 0 && "disabled"} ${
+                schedule?.schedule_type !== "now" ? "dropdown-toggle" : ""
+              } 
                 ${styles.section}`}
               data-bs-toggle="dropdown"
               aria-expanded="false"
@@ -335,25 +396,26 @@ const BookAppointment = ({ sceduleType, queryData }) => {
                   )}
                 </span>
               </div>
-            </Dropdown.Toggle>
-            <Dropdown.Menu className={`${slots?.length > 0 && styles.DDmintList}`}>
+            </div>
+            <ul className={`dropdown-menu  ${styles.DDmintList}`}>
               {slots?.length > 0 &&
                 slots?.map((ele, idx) => {
                   return (
-                    <Dropdown.Item
+                    <li
                       onClick={() => handleStartTime(ele)}
-                      className={`${start.id === ele ? styles.selectedListItem : ""
-                        } mb-2`}
+                      className={`${
+                        start.id === ele ? styles.selectedListItem : ""
+                      } mb-2`}
                       key={idx}
                     >
-                      <p className={`${styles.listItem}`}>
+                      <span className={`${styles.listItem}`}>
                         {convertUnixToHumanReadableTime(ele.start_date)}
-                      </p>
-                    </Dropdown.Item>
+                      </span>
+                    </li>
                   );
                 })}
-            </Dropdown.Menu>
-          </Dropdown>
+            </ul>
+          </div>
 
           <div className={styles.sectionWrapper2}>
             <div
