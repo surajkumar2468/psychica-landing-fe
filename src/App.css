@@ -940,9 +940,8 @@ span.ftr_img {
 }
 .star__img {
   position: relative;
-  width: 64px;
-  height: 64px;
 }
+
 
 .category__right_row3 ul li:last-child button {
   width: 100%;
@@ -960,7 +959,7 @@ span.ftr_img {
 }
 .star__img span {
   position: absolute;
-  top: 0;
+  top: 8px;
   right: 0;
 }
 .star__img span img {
@@ -1570,4 +1569,19 @@ span.center_img_explore {
 } */
 .img-user {
   max-height: 400px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.loader-class {
+  position: absolute;
+  left : 50%;
+  top: 50%;
+}
+.card-img {
+  height: 100px;
+  width: 65px;
+  object-fit: cover;
 }

@@ -72,7 +72,7 @@ const Landing = () => {
                   empowering growth and transformative experiences.
                 </span>{" "}
               </p>
-              <a href="" className="btn">
+              <a href="https://psychica.seekware.tech/client/signup" className="btn">
                 Get Started
               </a>
             </div>
@@ -103,7 +103,7 @@ const Landing = () => {
                 kidding. Now you can speak to an AI-powered psychic, anytime,
                 anywhere.
               </p>
-              <a href="" className="btn_sec4">
+              <a href="https://psychica.seekware.tech/client/signup" className="btn_sec4">
                 Ask the Oracle
               </a>
             </div>
@@ -146,7 +146,7 @@ const Landing = () => {
               </p>
               <ul>
                 <li>
-                  <a href="">Signup as a psychic</a>
+                  <a href="https://psychica.seekware.tech/professional/signup">Signup as a psychic</a>
                 </li>
                 <li>
                   <a href="">See psychic features </a>

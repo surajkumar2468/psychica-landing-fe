@@ -158,7 +158,7 @@ const ProfessionalLists = () => {
                     <div className="category__right_row3">
                       <ul>
                         <li>
-                          <a href="" className="learn_about">
+                          <a href={`/psychicdetails/${recommendedPsychic?.id}?type=${queryParams.get("type")}`} className="learn_about">
                             Learn About {recommendedPsychic?.first_name}
                           </a>
                         </li>

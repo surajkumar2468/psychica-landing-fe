@@ -31,7 +31,7 @@ const Index = ({actualrate, reviewcount, actualrating, name, picture, id, timezo
                         <div className='star__rating'><img src="/images/star-icon.svg" alt="" /> {`${actualrating === null ? 0 : actualrating}`} <i>{`(${reviewcount} reviews)`}</i></div>
                     </div>
                     <div className='star__img'>
-                        <img src="/images/pexels-pavel-danilyuk2.png" alt="" />
+                        <img className='card-img' src={picture} alt="" />
                         <span><img src="/images/check_green.svg" alt="" /></span>
                     </div>
                 </div>

@@ -13,8 +13,6 @@ const PsychicListData = ({ professionalList, from }) => {
   const availablePsychic = professionalList.slice(2, professionalList.length);
 
   const handleDetailsNavigation = (p_id, optionalType) => {
-    console.log("OPTIONAL", optionalType);
-    console.log("ID", p_id)
     let queryParams1 = {}
     if (from) {
       queryParams1 = {
@@ -48,7 +46,6 @@ const PsychicListData = ({ professionalList, from }) => {
                 promotedPsychics?.map((ele) => {
                   return (
                     <div className="col-12 col-md-6"
-                      onClick={() => handleDetailsNavigation(ele?.id, ele?.abilities[0])}
                     >
                       <div className="home_sec3_main">
                         <span className="img__sec3">
@@ -58,7 +55,7 @@ const PsychicListData = ({ professionalList, from }) => {
                         <div className="home_sec3_content">
                           <div className="home_sec3_row">
                             <div>
-                              <h5>{ele?.first_name}</h5>
+                              <h5 className="cursor-pointer" onClick={() => handleDetailsNavigation(ele?.id, ele?.abilities[0])}>{ele?.first_name}</h5>
                               <p>
                                 <img src="/images/abilities-icon.svg" alt="" />
                                 {
@@ -83,7 +80,7 @@ const PsychicListData = ({ professionalList, from }) => {
                           <div className="home_sec3_bottom">
                             <h4>0m Est. Wait</h4>
                             <div>
-                              <img src="/images/star-icon.svg" alt="" /> ${ele?.average_rating}{" "}
+                              <img src="/images/star-icon.svg" alt="" /> {ele?.average_rating || 0}{" "}
                               <i>{`(${ele?.review_count} reviews)`}</i>
                             </div>
                           </div>
@@ -97,7 +94,7 @@ const PsychicListData = ({ professionalList, from }) => {
               {
                 availablePsychic?.map((ele) => {
                   return (
-                    <div className="col-12 col-md-4" onClick={() => handleDetailsNavigation(ele?.id, ele?.abilities[0])}>
+                    <div className="col-12 col-md-4">
                       <div className="home_sec3_main">
                         <span className="img__sec3">
                           <img src={ele?.picture} alt="" />
@@ -106,7 +103,7 @@ const PsychicListData = ({ professionalList, from }) => {
                         <div className="home_sec3_content">
                           <div className="home_sec3_row">
                             <div>
-                              <h5>{ele?.first_name}</h5>
+                              <h5 className="cursor-pointer" onClick={() => handleDetailsNavigation(ele?.id, ele?.abilities[0])}>{ele?.first_name}</h5>
                               <p className="d-flex flex-warp">
                                 <img src="/images/abilities-icon.svg" alt="" />
                                 {
@@ -131,7 +128,7 @@ const PsychicListData = ({ professionalList, from }) => {
                           <div className="home_sec3_bottom">
                             <h4>0m Est. Wait</h4>
                             <div>
-                              <img src="/images/star-icon.svg" alt="" /> ${ele?.average_rating}{" "}
+                              <img src="/images/star-icon.svg" alt="" /> {ele?.average_rating || 0}{" "}
                               <i>{`(${ele?.review_count} reviews)`}</i>
                             </div>
                           </div>

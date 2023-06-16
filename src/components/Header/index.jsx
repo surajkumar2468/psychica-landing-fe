@@ -43,10 +43,10 @@ const Header = () => {
               ) : (
                 <>
                   <li>
-                    <a href="">Login</a>
+                    <a href="https://psychica.seekware.tech/client/login">Login</a>
                   </li>
                   <li>
-                    <a href="">Signup </a>
+                    <a href="https://psychica.seekware.tech/client/signup">Signup </a>
                   </li>
                 </>
               )}
