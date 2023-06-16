@@ -21,13 +21,13 @@ const Header = () => {
           <div className="hrd_menu">
             <ul>
               <li>
-                <a href="">For Psychics</a>
+                <a href="/forpsychics">For Psychics</a>
               </li>
               <li>
                 <a href="">How It Works</a>
               </li>
               <li>
-                <a href="">The Difference</a>
+                <a href="/thediffrence">The Difference</a>
               </li>
             </ul>
           </div>
