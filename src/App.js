@@ -8,8 +8,8 @@ import Header from "./components/Header";
 function App() {
   return (
     <div className="App">
-      <Header />
       <Router>
+        <Header />
         <Routes>
           {routes.map(({ id, path, component }) => (
             <Route key={id} path={path} element={component} />

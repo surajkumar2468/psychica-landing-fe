@@ -1,7 +1,10 @@
 import React from "react";
+// import { useLocation } from "react-router-dom";
 
 const Header = () => {
 
+  // const location = useLocation();
+  // console.log("LOCATION")
 
   return (
     <header className="header">
@@ -16,11 +19,11 @@ const Header = () => {
           <div className="hrd_menu">
             <ul>
               <li>
-                <a href="/forpsychics">For Psychics</a>
+                <a href="/forpsychics" >For Psychics</a>
               </li>
-              <li>
+              {/* <li>
                 <a href="">How It Works</a>
-              </li>
+              </li> */}
               <li>
                 <a href="/thediffrence">The Difference</a>
               </li>
