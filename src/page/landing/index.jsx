@@ -5,7 +5,6 @@ import { API_URLS } from "../../utils/API_URLS";
 import axiosInstance from "../../config/axiosinstance"; 
 
 const Landing = () => {
-
   const [professionalList, setProfessionalList] = useState([]);
   const [exploreData, setExploreData] = useState([]);
 
@@ -20,15 +19,15 @@ const Landing = () => {
       })
       .catch((err) => {
         console.warn(err);
-      })
-  }
-  
+      });
+  };
+
   const getCategory = async () => {
     await axiosInstance
       .get(`${API_URLS.categoryAll}`)
       .then((res) => {
-        console.log("RESPONSE_API", res)
-        setExploreData(res)
+        console.log("RESPONSE_API", res);
+        setExploreData(res);
       })
       .catch((err) => {
         console.log(err);
@@ -81,17 +80,8 @@ const Landing = () => {
         </section>
       </div>
       <section className="home_sec2">
-        {/* {
-          exploreData?.map((item)=>{
-            console.log("ITEM_DATA",item)
-            return(
-              <> */}
-        <TypeSlider exploreData={exploreData} />
-        {/* </> */}
-        {/* )
-          })
-        } */}
-        {/* <TypeSlider  /> */}
+
+        <TypeSlider exploreData={exploreData} exploreTopic="Explore By Topic"  />
       </section>
       <section className="home_sec3">
         <PsychicListData professionalList={professionalList} from='landing' />

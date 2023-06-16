@@ -6,12 +6,12 @@ import styles from "./psychictype.module.css";
 import { Link } from "react-router-dom";
 import { AiOutlineRight } from "react-icons/ai";
 import classNames from "classnames";
-const TypeSlider = ({ exploreData, _id }) => {
+const TypeSlider = ({ exploreData, _id, exploreTopic }) => {
   const settings = {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 1,
     infinite: false,
     responsive: [
@@ -35,8 +35,8 @@ const TypeSlider = ({ exploreData, _id }) => {
       {
         breakpoint: 768,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToShow: 1,
+          slidesToScroll: 1,
         },
       },
       {
@@ -63,6 +63,7 @@ const TypeSlider = ({ exploreData, _id }) => {
         <p className={classNames(styles.subtitle, "pt-3 pb-1")}>
           {RenderingNames[_id]}
         </p>
+        <h2>{exploreTopic}</h2>
         <div className="slider">
           <Slider {...settings}>
             {exploreData?.map((item) => {
