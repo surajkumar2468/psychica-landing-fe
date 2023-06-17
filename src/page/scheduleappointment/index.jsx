@@ -12,8 +12,10 @@ import { useLocation } from "react-router-dom";
 import { getQueryParamsAsObject } from "../../utils/common";
 import axiosInstance from "../../config/axiosinstance";
 import { API_URLS } from "../../utils/API_URLS";
+import Login from "../../components/scheduleappointment/Login";
 
 const signUpFlow = {
+  login: Login,
   initialSignup: InitialSignup,
   basicDetails: BasicDetails,
   helpSelector: HelpSelect,

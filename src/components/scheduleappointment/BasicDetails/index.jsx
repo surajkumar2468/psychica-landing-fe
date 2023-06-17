@@ -410,7 +410,6 @@ const BasicDetails = ({ userData, setUserData, setCurrentStep }) => {
                       className={classNames(
                         "btn btn-dark btn-block signupBtn rounded-2"
                       )}
-                      role="button"
                     >
                       Next
                     </button>
@@ -419,6 +418,15 @@ const BasicDetails = ({ userData, setUserData, setCurrentStep }) => {
               </form>
               <div className="row">
                 <div className={styles.loginDiv + " col"}>
+                  <p className="d-flex gap-1 align-items-center">
+                    Already have an account?{" "}
+                    <a
+                      onClick={() => setCurrentStep("login")}
+                      className="btn-link"
+                    >
+                      Login
+                    </a>
+                  </p>
                   <p className={styles.copyright + " mt-2"}>
                     © 2023 Psychica. All rights reserved.
                   </p>

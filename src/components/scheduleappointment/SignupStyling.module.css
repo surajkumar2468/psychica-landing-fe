@@ -639,6 +639,16 @@
   }
 }
 
+.loginDiv {
+  padding-top: 30px;
+}
+
+.loginDiv p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+}
+
 /** Tablet and Laptop */
 @media only screen and (min-width: 768px) and (max-width: 900px) {
   .heading {

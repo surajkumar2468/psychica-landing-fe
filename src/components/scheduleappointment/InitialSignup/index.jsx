@@ -34,17 +34,6 @@ const InitialSignup = ({ userData, setCurrentStep }) => {
                   Next
                 </button>
                 <hr className={styles.divider} />
-                <p className={styles.loginMsg}>
-                  Already have an account?{" "}
-                  <u>
-                    <a
-                      href="https://psychica.seekware.tech/client/login"
-                      className={styles.loginlink}
-                    >
-                      Login
-                    </a>
-                  </u>
-                </p>
               </div>
             </div>
           </div>

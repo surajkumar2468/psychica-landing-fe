@@ -1589,3 +1589,9 @@ span.center_img_explore {
   height: 65px;
   width: 65px;
 }
+
+.btn-link {
+  color: black;
+
+  font-family: "Nexa-bold";
+}
