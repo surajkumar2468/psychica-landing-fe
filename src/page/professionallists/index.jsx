@@ -117,7 +117,9 @@ const ProfessionalLists = () => {
                         <div className="star__rating">
                           <img src="/images/star-icon.svg" alt="" />{" "}
                           {`${recommendedPsychic?.average_rating || 0}`}{" "}
-                          <i>{`(${recommendedPsychic?.review_count} reviews)`}</i>
+                          <i>{`(${
+                            recommendedPsychic?.review_count || 0
+                          } reviews)`}</i>
                         </div>
                       </div>
                       <div className="star__img">

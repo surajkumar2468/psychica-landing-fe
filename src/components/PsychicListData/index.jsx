@@ -78,7 +78,9 @@ const PsychicListData = ({ professionalList, from }) => {
                         >
                           <h6>
                             ${ele?.actual_rate}/minute
-                            <strong>${ele?.discounted_rate}/minute</strong>
+                            {ele?.discounted_rate && (
+                              <strong>${ele?.discounted_rate}/minute</strong>
+                            )}
                           </h6>
                         </div>
                       </div>
@@ -139,7 +141,9 @@ const PsychicListData = ({ professionalList, from }) => {
                         >
                           <h6>
                             ${ele?.actual_rate}/minute
-                            <strong>${ele?.discounted_rate}/minute</strong>
+                            {ele?.discounted_rate && (
+                              <strong>${ele?.discounted_rate}/minute</strong>
+                            )}
                           </h6>
                         </div>
                       </div>
