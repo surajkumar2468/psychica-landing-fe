@@ -1,7 +1,10 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 
 const Header = () => {
 
+  const location = useLocation();
+  console.log("LOCATION", location);
 
   return (
     <header className="header">
@@ -12,17 +15,17 @@ const Header = () => {
               <img src="/images/logo.svg" alt="" />
             </a>
           </div>
-          <a href="/psychictype" className="hrd_select">Explore Psychics</a>
+          <a href="/psychictype" className={`${location.pathname.includes('/psychictype') && 'active'} hrd_select`}>Explore Psychics</a>
           <div className="hrd_menu">
             <ul>
               <li>
-                <a href="">For Psychics</a>
+                <a href="/forpsychics" className={`${location.pathname.includes('/forpsychics') && 'active'}`} >For Psychics</a>
               </li>
-              <li>
+              {/* <li>
                 <a href="">How It Works</a>
-              </li>
+              </li> */}
               <li>
-                <a href="">The Difference</a>
+                <a href="/thediffrence" className={`${location.pathname.includes('/thediffrenc') && 'active'}`}>The Difference</a>
               </li>
             </ul>
           </div>

@@ -4,7 +4,8 @@ import ProfessionalLists from "../page/professionallists";
 import PsychicDetails from "../page/psychicDetails";
 import Psychictypes from "../page/psychicstypes";
 import ScheduleAppointment from "../page/scheduleappointment";
-
+import ForPsychics from "../page/forpsychics"
+import TheDiffrence from "../page/thediffrence"
 export const routes = [
   {
     id: "landingPageRoute",
@@ -40,5 +41,15 @@ export const routes = [
     id: "ScheduleAppointment",
     path: "/scheduleappointment",
     component: <ScheduleAppointment />,
+  },
+  {
+    id:'for-Psychics',
+    path:"/forpsychics",
+    component: <ForPsychics/>
+  },
+  {
+    id:'the-diffrence',
+    path:"/thediffrence",
+    component: <TheDiffrence/>
   },
 ];

@@ -10,8 +10,8 @@ function App() {
   // const [isTokenLogin, setIsTokenLogin] = useState(false)
   return (
     <div className="App">
-      <Header />
       <Router>
+        <Header />
         <Routes>
           {routes.map(({ id, path, component }) => (
             <Route key={id} path={path} element={component} />
