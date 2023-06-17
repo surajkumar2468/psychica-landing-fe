@@ -60,9 +60,9 @@ const TypeSlider = ({ exploreData, _id, exploreTopic }) => {
   return (
     <div className="container">
       <div className="col-md-12">
-        <p className={classNames(styles.subtitle, "pt-3 pb-1")}>
+        {/* <p className={classNames(styles.subtitle, "pt-3 pb-1")}>
           {RenderingNames[_id]}
-        </p>
+        </p> */}
         <h2>{exploreTopic}</h2>
         <div className="slider">
           <Slider {...settings}>

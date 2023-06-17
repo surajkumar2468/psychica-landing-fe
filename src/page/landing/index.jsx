@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import TypeSlider from "../../components/TypesSlider";
 import PsychicListData from "../../components/PsychicListData";
 import { API_URLS } from "../../utils/API_URLS";
-import axiosInstance from "../../config/axiosinstance"; 
+import axiosInstance from "../../config/axiosinstance";
 
 const Landing = () => {
   const [professionalList, setProfessionalList] = useState([]);
@@ -14,7 +14,7 @@ const Landing = () => {
       .then((res) => {
         if (res) {
           setProfessionalList(res);
-          console.log("PROFESSIONALS",res);
+          console.log("PROFESSIONALS", res);
         }
       })
       .catch((err) => {
@@ -42,7 +42,7 @@ const Landing = () => {
   return (
     <div className="App">
       <div className="container">
-        <section className="home_sec1">
+        {/* <section className="home_sec1">
           <span>
             <video
               data-wf-ignore="true"
@@ -77,14 +77,41 @@ const Landing = () => {
               </a>
             </div>
           </div>
+        </section> */}
+        <section className="home_sec11">
+          <div className="home_sec1_content">
+            <div>
+              <h1>
+                Unlocking insights,<span> unleashing </span>{" "}
+                <span> potential.</span>
+              </h1>
+              <p>
+                Psychix is a premier marketplace for insightful
+                <span> psychics,empowering growth and </span>
+                <span> transformative experiences.</span>{" "}
+              </p>
+              <ul>
+                <li>
+                  <a href="https://psychica.seekware.tech/client/signup">
+                    Explore our psychics
+                  </a>
+                </li>
+                <li>
+                  <a href="">See how we compare </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <span className="home_sec11_img">
+            <img src="/images/home_sec_img.png" alt="" />
+          </span>
         </section>
       </div>
       <section className="home_sec2">
-
-        <TypeSlider exploreData={exploreData} exploreTopic="Explore By Topic"  />
+        <TypeSlider exploreData={exploreData} exploreTopic="Explore By Topic" />
       </section>
       <section className="home_sec3">
-        <PsychicListData professionalList={professionalList} from='landing' />
+        <PsychicListData professionalList={professionalList} from="landing" />
       </section>
 
       <div className="container">
@@ -103,7 +130,10 @@ const Landing = () => {
                 kidding. Now you can speak to an AI-powered psychic, anytime,
                 anywhere.
               </p>
-              <a href="https://psychica.seekware.tech/client/signup" className="btn_sec4">
+              <a
+                href="https://psychica.seekware.tech/client/signup"
+                className="btn_sec4"
+              >
                 Ask the Oracle
               </a>
             </div>
@@ -146,7 +176,9 @@ const Landing = () => {
               </p>
               <ul>
                 <li>
-                  <a href="https://psychica.seekware.tech/professional/signup">Signup as a psychic</a>
+                  <a href="https://psychica.seekware.tech/professional/signup">
+                    Signup as a psychic
+                  </a>
                 </li>
                 <li>
                   <a href="">See psychic features </a>
