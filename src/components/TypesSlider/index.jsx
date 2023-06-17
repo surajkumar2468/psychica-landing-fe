@@ -49,7 +49,6 @@ const TypeSlider = ({ exploreData, _id, exploreTopic }) => {
     ],
   };
 
-
   const RenderingNames = {
     STYLES: "Styles",
     TOOLS: "Tools",
@@ -60,9 +59,11 @@ const TypeSlider = ({ exploreData, _id, exploreTopic }) => {
   return (
     <div className="container">
       <div className="col-md-12">
-        {/* <p className={classNames(styles.subtitle, "pt-3 pb-1")}>
-          {RenderingNames[_id]}
-        </p> */}
+        {RenderingNames[_id] && (
+          <p className={classNames(styles.subtitle, "pt-3 pb-1")}>
+            {RenderingNames[_id]}
+          </p>
+        )}
         <h2>{exploreTopic}</h2>
         <div className="slider">
           <Slider {...settings}>
@@ -80,9 +81,8 @@ const TypeSlider = ({ exploreData, _id, exploreTopic }) => {
                       <h6>{item.name}</h6>
                       <Link
                         to={{
-                          pathname: '/professionallists',
+                          pathname: "/professionallists",
                           search: `type=${item?.type}&value=${item.name}`,
-
                         }}
                       >
                         Explore <AiOutlineRight />

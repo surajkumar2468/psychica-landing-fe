@@ -62,7 +62,6 @@ const Psychictypes = () => {
         </div>
       </div>
       {exploreType.map((item) => {
-        console.log("ITEM", item)
         return (
           <>
             <TypeSlider _id={item._id} exploreData={item.list} />
