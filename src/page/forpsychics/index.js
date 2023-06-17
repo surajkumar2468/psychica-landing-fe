@@ -15,7 +15,7 @@ const index = () => {
                 yourself.
               </p>
               <a
-                href="https://psychica.seekware.tech/client/signup"
+                href="https://psychica.seekware.tech/professional/signup"
                 className="btn_under"
               >
                 Experience a better platform{" "}
@@ -101,14 +101,12 @@ const index = () => {
             </h2>
             <ul>
               <li>
-                <a href="https://psychica.seekware.tech/client/signup">
+                <a href="https://psychica.seekware.tech/professional/signup">
                   Signup as a psychic
                 </a>
               </li>
               <li>
-                <a href="https://psychica.seekware.tech/client/signup">
-                  See psychic features
-                </a>
+                <a href="/thediffrence">See psychic features</a>
               </li>
             </ul>
           </div>

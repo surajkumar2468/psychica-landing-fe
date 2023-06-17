@@ -24,7 +24,7 @@ const index = () => {
                 </strong>
               </p>
               <a
-                href="https://psychica.seekware.tech/client/signup"
+                href="https://psychica.seekware.tech/professional/signup"
                 className="btn_under"
               >
                 Experience a better platform{" "}
@@ -396,7 +396,7 @@ const index = () => {
             </h2>
             <ul>
               <li>
-                <a href="https://psychica.seekware.tech/professional/signup">
+                <a href="https://psychica.seekware.tech/client/signup">
                   Signup now
                 </a>
               </li>

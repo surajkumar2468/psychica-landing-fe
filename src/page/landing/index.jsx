@@ -92,12 +92,10 @@ const Landing = () => {
               </p>
               <ul>
                 <li>
-                  <a href="https://psychica.seekware.tech/client/signup">
-                    Explore our psychics
-                  </a>
+                  <a href="/psychictype">Explore our psychics</a>
                 </li>
                 <li>
-                  <a href="">See how we compare </a>
+                  <a href="/thediffrence">See how we compare </a>
                 </li>
               </ul>
             </div>
@@ -131,7 +129,8 @@ const Landing = () => {
                 anywhere.
               </p>
               <a
-                href="https://psychica.seekware.tech/client/signup"
+                href="https://meetoracle.com"
+                target="_blank"
                 className="btn_sec4"
               >
                 Ask the Oracle
@@ -158,7 +157,7 @@ const Landing = () => {
             for yourself, it’s not only more affordable than other platforms,
             the experience is next-to-none.
           </p>
-          <a href="" className="home_sec5_btn">
+          <a href="/thediffrence" className="home_sec5_btn">
             See the difference{" "}
           </a>
         </section>
@@ -181,7 +180,7 @@ const Landing = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="">See psychic features </a>
+                  <a href="/thediffrence">See psychic features </a>
                 </li>
               </ul>
             </div>
