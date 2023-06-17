@@ -21,9 +21,9 @@ const Header = () => {
               <li>
                 <a href="/forpsychics" className={`${location.pathname.includes('/forpsychics') && 'active'}`} >For Psychics</a>
               </li>
-              {/* <li>
-                <a href="">How It Works</a>
-              </li> */}
+              <li>
+                <a href="#">How It Works</a>
+              </li>
               <li>
                 <a href="/thediffrence" className={`${location.pathname.includes('/thediffrenc') && 'active'}`}>The Difference</a>
               </li>
