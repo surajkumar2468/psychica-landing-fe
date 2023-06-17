@@ -121,7 +121,11 @@ const ProfessionalLists = () => {
                         </div>
                       </div>
                       <div className="star__img">
-                        <img src="/images/pexels-pavel-danilyuk2.png" alt="" />
+                        <img
+                          className="proffesional-card-img"
+                          src={`${recommendedPsychic?.picture}`}
+                          alt=""
+                        />
                         <span>
                           <img src="/images/check_green.svg" alt="" />
                         </span>
@@ -158,7 +162,12 @@ const ProfessionalLists = () => {
                     <div className="category__right_row3">
                       <ul>
                         <li>
-                          <a href={`/psychicdetails/${recommendedPsychic?.id}?type=${queryParams.get("type")}`} className="learn_about">
+                          <a
+                            href={`/psychicdetails/${
+                              recommendedPsychic?.id
+                            }?type=${queryParams.get("type")}`}
+                            className="learn_about"
+                          >
                             Learn About {recommendedPsychic?.first_name}
                           </a>
                         </li>

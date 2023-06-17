@@ -942,7 +942,6 @@ span.ftr_img {
   position: relative;
 }
 
-
 .category__right_row3 ul li:last-child button {
   width: 100%;
   border: 2px solid #3b71fe;
@@ -1577,11 +1576,16 @@ span.center_img_explore {
 
 .loader-class {
   position: absolute;
-  left : 50%;
+  left: 50%;
   top: 50%;
 }
 .card-img {
   height: 100px;
   width: 65px;
   object-fit: cover;
+}
+
+.proffesional-card-img {
+  height: 65px;
+  width: 65px;
 }
