@@ -148,7 +148,7 @@ const PsychicListData = ({ professionalList, from }) => {
                         </div>
                       </div>
                       <div className="home_sec3_bottom">
-                        <h4>0m Est. Wait</h4>
+                        <h4>0min. Est. Wait</h4>
                         <div>
                           <img src="/images/star-icon.svg" alt="" />{" "}
                           {ele?.average_rating || 0}{" "}
